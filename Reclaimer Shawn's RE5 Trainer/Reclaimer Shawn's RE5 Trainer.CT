@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="21">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"Chris's Health"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"re5dx9.exe"+00D9F1B4</Address>
+      <Offsets>
+        <Offset>184</Offset>
+        <Offset>C</Offset>
+        <Offset>17C</Offset>
+        <Offset>664</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>57</ID>
+      <Description>"Sheva's Health"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"re5dx9.exe"+00D9F52C</Address>
+      <Offsets>
+        <Offset>184</Offset>
+        <Offset>C</Offset>
+        <Offset>188</Offset>
+        <Offset>664</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EE9B7</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EE9E3</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEA0F</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEA3B</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>62</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEA67</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>71</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEA93</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>78</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEABF</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>85</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEAEB</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>92</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEB17</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>99</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEB43</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>106</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEDD7</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>113</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEE03</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>120</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEE2F</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>127</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEE5B</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>134</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEE87</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>141</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEEB3</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>148</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEEDF</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>155</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEF0B</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>162</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEF37</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>169</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00E39D34</Address>
+      <Offsets>
+        <Offset>EEF63</Offset>
+        <Offset>53DE4</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>
+</LuaScript>
+</CheatTable>
