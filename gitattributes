@@ -46,3 +46,5 @@
 # =============
 *.html      text
 *.css       text
+
+static/* linguist-vendored
