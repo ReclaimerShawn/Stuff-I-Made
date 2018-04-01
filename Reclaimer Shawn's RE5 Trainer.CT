@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="21">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>300</ID>
+      <Description>"Invincibility (Credit to BlackBlood of RE Modding Boards)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+AoBScan(Invincible,66 29 8E 64 13 00 00)
+registersymbol(Invincible)
+
+Invincible:
+db 90 90 90 90 90 90 90
+
+[DISABLE]
+unregistersymbol(Invincible)
+Invincible:
+  db 66 29 8E 64 13 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>60</ID>
+      <Description>"Money"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>1C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>185</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24A1F</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>191</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24A4B</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>197</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24A77</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>203</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24AA3</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>209</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24ACF</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>215</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24AFB</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>221</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24B27</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>227</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24B53</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>233</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24B7F</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>239</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24BAB</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>245</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24E3F</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>251</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24E6B</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>257</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24E97</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>263</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24EC3</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>269</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24EEF</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>275</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24F1B</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>281</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24F47</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>287</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24F73</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>293</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24F9F</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>299</ID>
+      <Description>"Ammo Upgrade"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"re5dx9.exe"+00DA23D8</Address>
+      <Offsets>
+        <Offset>24FCB</Offset>
+        <Offset>399C0</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
