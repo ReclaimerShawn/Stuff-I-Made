@@ -63,6 +63,9 @@ end
 
 UDF1.OnClose = CloseClick
 
+getLuaEngine().cbShowOnPrint.Checked=false 
+getLuaEngine().hide()
+
 function CEComboBox1Select(sender)
    index = UDF1.CEComboBox1.ItemIndex
    if index == -1 then return end;
@@ -5564,7 +5567,8 @@ function CECheckbox11Change(sender)
    memoryrecord_freeze(CheatEntry)
    else
    getAddressList().getMemoryRecord(0)
-   memoryrecord_unfreeze(CheatEntry)   
+   memoryrecord_unfreeze(CheatEntry)
+   end
 end
 
 function CEButton66Click(sender)
