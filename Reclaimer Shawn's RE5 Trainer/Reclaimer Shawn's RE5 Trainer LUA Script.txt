@@ -5562,7 +5562,7 @@ t.Enabled = UDF1.CEComboBox24.OnSelect
 end
 
 function CECheckbox11Change(sender)
-   if ((checkbox_getState(UDF1.CECheckbox7)) == 1) then
+   if ((checkbox_getState(UDF1.CECheckbox11)) == 1) then
    getAddressList().getMemoryRecord(0)
    memoryrecord_freeze(CheatEntry)
    else
