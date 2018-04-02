@@ -24,7 +24,7 @@ CreditsText=[[
 First and foremost, I'd like to thank both God and his son Jesus Christ for giving me the knowledge and patience to make this trainer.
 Reclaimer Shawn = Programming, Address Finding, Form Creating
 tabbyfight = Beta testing
-Raz0r = For his patch to allow character swapping to work. Also, character IDs.
+Raz0r = For his patch to allow character swapping to work. Also, character IDs and fireable LTD.
 Sectus = Item Indexes
 BlackBlood of RE Modding Boards = Invincibility
 Dark Byte and the Cheat Engine Community = For creating Cheat Engine and helping me to learn along the way.
@@ -5571,6 +5571,10 @@ function CECheckbox11Change(sender)
     end
 end
 
+function LTDTime()
+      writeBytes("[[re5dx9.exe+00DA2944]+d5a10]+1c68",255, 235, 47, 45)
+end
+
 function CEButton66Click(sender)
   showMessage(InventoryHelp)
 end
@@ -5640,4 +5644,21 @@ function CEButton68Click(sender)
       writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fcb",0)
       writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc8",0)
       writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc9",0)
+end
+
+function CECheckbox23Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox23)) == 1) then
+
+    t=createTimer(nil)
+    timer_setInterval(t, 1)
+    timer_onTimer(t, LTDTime)
+    else
+      t.destroy();
+      t=nil
+    end
+end
+
+function CEButton69Click(sender)
+             CheatEntry = getAddressList().getMemoryRecord(1)
+             memoryrecord_freeze(CheatEntry)
 end
