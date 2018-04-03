@@ -27,6 +27,7 @@ tabbyfight = Beta testing
 Raz0r = For his patch to allow character swapping to work. Also, character IDs and fireable LTD.
 Sectus = Item Indexes
 BlackBlood of RE Modding Boards = Invincibility
+STN of CEForums = XLIVE Disable/Anti-Debug Fix
 Dark Byte and the Cheat Engine Community = For creating Cheat Engine and helping me to learn along the way.
 ]]
 
@@ -5499,6 +5500,8 @@ t.Enabled = UDF1.CEComboBox12.OnSelect
       writeInteger("[re5dx9.exe+00DA23D8]+2331c",7)
    elseif index == 5 then
       writeInteger("[re5dx9.exe+00DA23D8]+2331c",9)
+   elseif index == 6 then
+      writeInteger("[re5dx9.exe+00DA23D8]+2331c",1)
    end
       end
 end
@@ -5557,6 +5560,8 @@ t.Enabled = UDF1.CEComboBox24.OnSelect
       writeInteger("[re5dx9.exe+00DA23D8]+2336c",7)
    elseif index == 5 then
       writeInteger("[re5dx9.exe+00DA23D8]+2336c",8)
+   elseif index == 6 then
+      writeInteger("[re5dx9.exe+00DA23D8]+2336c",1)
    end
       end
 end
@@ -5571,8 +5576,12 @@ function CECheckbox11Change(sender)
     end
 end
 
-function LTDTime()
-      writeBytes("[[re5dx9.exe+00DA2944]+d5a10]+1c68",255, 235, 47, 45)
+function LTDTimer()
+             writeBytes("[[re5dx9.exe+00DA2944]+d5a10]+1c68",255, 235, 47, 45)
+end
+
+function LTDTimerTwo()
+//my pointer here whenever I get it
 end
 
 function CEButton66Click(sender)
@@ -5651,7 +5660,19 @@ function CECheckbox23Change(sender)
 
     t=createTimer(nil)
     timer_setInterval(t, 1)
-    timer_onTimer(t, LTDTime)
+    timer_onTimer(t, LTDTimer)
+    else
+      t.destroy();
+      t=nil
+    end
+end
+
+function CECheckbox1Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox1)) == 1) then
+
+    t=createTimer(nil)
+    timer_setInterval(t, 1)
+    timer_onTimer(t, LTDTimerTwo)
     else
       t.destroy();
       t=nil
@@ -5661,4 +5682,26 @@ end
 function CEButton69Click(sender)
              CheatEntry = getAddressList().getMemoryRecord(1)
              memoryrecord_freeze(CheatEntry)
+end
+
+function CEButton70Click(sender)
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_freeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(4)
+             memoryrecord_freeze(CheatEntry)
+end
+
+function CEButton71Click(sender)
+writeBytes("[[re5dx9.exe+00E243B4]+ec]+21a8",13,01)
+writeInteger("[[re5dx9.exe+00E243B4]+ec]+21ac",999)
+writeBytes("[[re5dx9.exe+00E243B4]+ec]+21d8",52,01)
+writeInteger("[[re5dx9.exe+00E243B4]+ec]+21de",999)
+CheatEntry = getAddressList().getMemoryRecord(5)
+memoryrecord_freeze(CheatEntry)
+CheatEntry = getAddressList().getMemoryRecord(6)
+memoryrecord_freeze(CheatEntry)
+CheatEntry = getAddressList().getMemoryRecord(7)
+memoryrecord_freeze(CheatEntry)
+CheatEntry = getAddressList().getMemoryRecord(8)
+memoryrecord_freeze(CheatEntry)
 end
