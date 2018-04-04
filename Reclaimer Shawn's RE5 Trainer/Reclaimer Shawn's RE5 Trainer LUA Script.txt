@@ -27,7 +27,6 @@ tabbyfight = Beta testing
 Raz0r = For his patch to allow character swapping to work. Also, character IDs and fireable LTD.
 Sectus = Item Indexes
 BlackBlood of RE Modding Boards = Invincibility
-STN of CEForums = XLIVE Disable/Anti-Debug Fix
 Dark Byte and the Cheat Engine Community = For creating Cheat Engine and helping me to learn along the way.
 ]]
 
@@ -50,7 +49,7 @@ Barry's Samurai Edge will crash anyone (whether they join you or you join them) 
 this if they have Standard.
 ]]
 
-i = 0
+ItemHack = 0
 
 UDF1.show()
 getAutoAttachList().add("re5dx9.exe")
@@ -5578,10 +5577,7 @@ end
 
 function LTDTimer()
              writeBytes("[[re5dx9.exe+00DA2944]+d5a10]+1c68",255, 235, 47, 45)
-end
-
-function LTDTimerTwo()
-//my pointer here whenever I get it
+             writeBytes("[[re5dx9.exe+00E243B4]+ec]+4c08",255, 235, 47, 45)
 end
 
 function CEButton66Click(sender)
@@ -5667,35 +5663,17 @@ function CECheckbox23Change(sender)
     end
 end
 
-function CECheckbox1Change(sender)
-   if ((checkbox_getState(UDF1.CECheckbox1)) == 1) then
-
-    t=createTimer(nil)
-    timer_setInterval(t, 1)
-    timer_onTimer(t, LTDTimerTwo)
-    else
-      t.destroy();
-      t=nil
-    end
-end
-
 function CEButton69Click(sender)
              CheatEntry = getAddressList().getMemoryRecord(1)
              memoryrecord_freeze(CheatEntry)
 end
 
-function CEButton70Click(sender)
-             CheatEntry = getAddressList().getMemoryRecord(3)
-             memoryrecord_freeze(CheatEntry)
-             CheatEntry = getAddressList().getMemoryRecord(4)
-             memoryrecord_freeze(CheatEntry)
-end
-
 function CEButton71Click(sender)
-writeBytes("[[re5dx9.exe+00E243B4]+ec]+21a8",13,01)
-writeInteger("[[re5dx9.exe+00E243B4]+ec]+21ac",999)
-writeBytes("[[re5dx9.exe+00E243B4]+ec]+21d8",52,01)
-writeInteger("[[re5dx9.exe+00E243B4]+ec]+21de",999)
+if _G.ItemHack == 0 then
+writeBytes("[[re5dx9.exe+00E243B4]+ec]+21a8",52,01)
+writeBytes("[[re5dx9.exe+00E243B4]+ec]+21c5",255,0,15)
+writeBytes("[[re5dx9.exe+00E243B4]+ec]+21d8",26,01)
+writeBytes("[[re5dx9.exe+00E243B4]+ec]+21f5",255,0,15)
 CheatEntry = getAddressList().getMemoryRecord(5)
 memoryrecord_freeze(CheatEntry)
 CheatEntry = getAddressList().getMemoryRecord(6)
@@ -5704,4 +5682,16 @@ CheatEntry = getAddressList().getMemoryRecord(7)
 memoryrecord_freeze(CheatEntry)
 CheatEntry = getAddressList().getMemoryRecord(8)
 memoryrecord_freeze(CheatEntry)
+_G.ItemHack = 1
+else
+CheatEntry = getAddressList().getMemoryRecord(5)
+memoryrecord_unfreeze(CheatEntry)
+CheatEntry = getAddressList().getMemoryRecord(6)
+memoryrecord_unfreeze(CheatEntry)
+CheatEntry = getAddressList().getMemoryRecord(7)
+memoryrecord_unfreeze(CheatEntry)
+CheatEntry = getAddressList().getMemoryRecord(8)
+memoryrecord_unfreeze(CheatEntry)
+_G.ItemHack = 0
+end
 end
