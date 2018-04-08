@@ -96,7 +96,7 @@ function CloseClick()
   return caFree
 end
 
-getLuaEngine().cbShowOnPrint.Checked=false 
+getLuaEngine().cbShowOnPrint.Checked=false
 getLuaEngine().hide()
 
 UDF1.OnClose = CloseClick
@@ -870,6 +870,9 @@ function hyper()
     if index2 == -1 then return end;
 
     if index2 == 0 then
+    if inta == 0 then
+      CheatEntry = getAddressList().getMemoryRecord(0)
+      memoryrecord_unfreeze(CheatEntry)
       writeBytes("100140000+80463C41",00)
       CheatEntry = getAddressList().getMemoryRecord(0)
       memoryrecord_freeze(CheatEntry)
@@ -878,6 +881,10 @@ function hyper()
       CheatEntry = getAddressList().getMemoryRecord(2)
       memoryrecord_unfreeze(CheatEntry)
       CheatEntry = getAddressList().getMemoryRecord(6)
+      memoryrecord_unfreeze(CheatEntry)
+    end
+    if intb == 0 then
+      CheatEntry = getAddressList().getMemoryRecord(3)
       memoryrecord_unfreeze(CheatEntry)
       writeBytes("100140000+80463D95",00)
       CheatEntry = getAddressList().getMemoryRecord(3)
@@ -888,6 +895,7 @@ function hyper()
       memoryrecord_unfreeze(CheatEntry)
       CheatEntry = getAddressList().getMemoryRecord(7)
       memoryrecord_unfreeze(CheatEntry)
+    end
 
     elseif index2 == 1 then
       if inta == 0 then
@@ -897,6 +905,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar2 == 07 then
            if hyperseed <= 9 then
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(1)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(2)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(6)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",62)
              writeBytes("100140000+804647E8",00,00)
              writeBytes("100140000+804649B4",00,00)
@@ -910,6 +926,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(6)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",00)
              CheatEntry = getAddressList().getMemoryRecord(0)
              memoryrecord_freeze(CheatEntry)
@@ -929,6 +947,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar8 == 07 then
            if hyperseed <= 9 then
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(4)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(5)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(7)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",62)
              writeBytes("100140000+80464EC8",00,00)
              writeBytes("100140000+80465094",00,00)
@@ -942,6 +968,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(7)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",00)
              CheatEntry = getAddressList().getMemoryRecord(3)
              memoryrecord_freeze(CheatEntry)
@@ -962,6 +990,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar2 == 07 then
            if hyperseed <= 24 then
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(1)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(2)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(6)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",62)
              writeBytes("100140000+804647E8",00,00)
              writeBytes("100140000+804649B4",00,00)
@@ -975,6 +1011,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(6)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",00)
              CheatEntry = getAddressList().getMemoryRecord(0)
              memoryrecord_freeze(CheatEntry)
@@ -994,6 +1032,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar8 == 07 then
            if hyperseed <= 24 then
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(4)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(5)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(7)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",62)
              writeBytes("100140000+80464EC8",00,00)
              writeBytes("100140000+80465094",00,00)
@@ -1007,6 +1053,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(7)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",00)
              CheatEntry = getAddressList().getMemoryRecord(3)
              memoryrecord_freeze(CheatEntry)
@@ -1027,6 +1075,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar2 == 07 then
            if hyperseed <= 49 then
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(1)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(2)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(6)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",62)
              writeBytes("100140000+804647E8",00,00)
              writeBytes("100140000+804649B4",00,00)
@@ -1040,6 +1096,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(6)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",00)
              CheatEntry = getAddressList().getMemoryRecord(0)
              memoryrecord_freeze(CheatEntry)
@@ -1059,6 +1117,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar8 == 07 then
            if hyperseed <= 49 then
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(4)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(5)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(7)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",62)
              writeBytes("100140000+80464EC8",00,00)
              writeBytes("100140000+80465094",00,00)
@@ -1072,6 +1138,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(7)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",00)
              CheatEntry = getAddressList().getMemoryRecord(3)
              memoryrecord_freeze(CheatEntry)
@@ -1092,6 +1160,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar2 == 07 then
            if hyperseed <= 74 then
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(1)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(2)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(6)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",62)
              writeBytes("100140000+804647E8",00,00)
              writeBytes("100140000+804649B4",00,00)
@@ -1105,6 +1181,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(6)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",00)
              CheatEntry = getAddressList().getMemoryRecord(0)
              memoryrecord_freeze(CheatEntry)
@@ -1124,6 +1202,14 @@ function hyper()
          hyperseed = math.random(0,100)
            if _G.svar8 == 07 then
            if hyperseed <= 74 then
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(4)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(5)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(7)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",62)
              writeBytes("100140000+80464EC8",00,00)
              writeBytes("100140000+80465094",00,00)
@@ -1137,6 +1223,8 @@ function hyper()
              CheatEntry = getAddressList().getMemoryRecord(7)
              memoryrecord_freeze(CheatEntry)
            else
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",00)
              CheatEntry = getAddressList().getMemoryRecord(3)
              memoryrecord_freeze(CheatEntry)
@@ -1150,6 +1238,15 @@ function hyper()
            end
            end
     elseif index2 == 5 then
+           if inta == 0 then
+             CheatEntry = getAddressList().getMemoryRecord(0)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(1)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(2)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(6)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463C41",62)
              writeBytes("100140000+804647E8",00,00)
              writeBytes("100140000+804649B4",00,00)
@@ -1162,6 +1259,16 @@ function hyper()
              memoryrecord_freeze(CheatEntry)
              CheatEntry = getAddressList().getMemoryRecord(6)
              memoryrecord_freeze(CheatEntry)
+           end
+           if intb == 0 then
+             CheatEntry = getAddressList().getMemoryRecord(3)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(4)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(5)
+             memoryrecord_unfreeze(CheatEntry)
+             CheatEntry = getAddressList().getMemoryRecord(7)
+             memoryrecord_unfreeze(CheatEntry)
              writeBytes("100140000+80463D95",62)
              writeBytes("100140000+80464EC8",00,00)
              writeBytes("100140000+80465094",00,00)
@@ -1174,9 +1281,11 @@ function hyper()
              memoryrecord_freeze(CheatEntry)
              CheatEntry = getAddressList().getMemoryRecord(7)
              memoryrecord_freeze(CheatEntry)
+           end
     end
-      if hyper1 == 62 then
       if _G.svar2 == 0 then
+        CheatEntry = getAddressList().getMemoryRecord(0)
+        memoryrecord_unfreeze(CheatEntry)
         writeBytes("100140000+80463C41",00)
         CheatEntry = getAddressList().getMemoryRecord(0)
         memoryrecord_freeze(CheatEntry)
@@ -1187,13 +1296,34 @@ function hyper()
         CheatEntry = getAddressList().getMemoryRecord(6)
         memoryrecord_unfreeze(CheatEntry)
       elseif _G.svar2 == 07 then
+      if hyper1 == 62 then
+        CheatEntry = getAddressList().getMemoryRecord(1)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(2)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(6)
+        memoryrecord_unfreeze(CheatEntry)
         writeBytes("100140000+804647E8",00,00)
         writeBytes("100140000+804649B4",00,00)
         writeBytes("100140000+804649B6",00,00,00,00)
+        CheatEntry = getAddressList().getMemoryRecord(1)
+        memoryrecord_freeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(2)
+        memoryrecord_freeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(6)
+        memoryrecord_freeze(CheatEntry)
+      else
+        CheatEntry = getAddressList().getMemoryRecord(1)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(2)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(6)
+        memoryrecord_unfreeze(CheatEntry)
+      end
      end
-     end
-      if hyper2 == 62 then
       if _G.svar8 == 0 then
+        CheatEntry = getAddressList().getMemoryRecord(3)
+        memoryrecord_unfreeze(CheatEntry)
         writeBytes("100140000+80463D95",00)
         CheatEntry = getAddressList().getMemoryRecord(3)
         memoryrecord_freeze(CheatEntry)
@@ -1204,10 +1334,30 @@ function hyper()
         CheatEntry = getAddressList().getMemoryRecord(7)
         memoryrecord_unfreeze(CheatEntry)
      elseif _G.svar8 == 07 then
+      if hyper2 == 62 then
+        CheatEntry = getAddressList().getMemoryRecord(4)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(5)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(7)
+        memoryrecord_unfreeze(CheatEntry)
        writeBytes("100140000+80464EC8",00,00)
        writeBytes("100140000+80465094",00,00)
        writeBytes("100140000+80465096",00,00,00,00)
-     end
+        CheatEntry = getAddressList().getMemoryRecord(4)
+        memoryrecord_freeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(5)
+        memoryrecord_freeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(7)
+        memoryrecord_freeze(CheatEntry)
+      else
+        CheatEntry = getAddressList().getMemoryRecord(4)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(5)
+        memoryrecord_unfreeze(CheatEntry)
+        CheatEntry = getAddressList().getMemoryRecord(7)
+        memoryrecord_unfreeze(CheatEntry)
+      end
      end
 end
 
@@ -3367,7 +3517,7 @@ end
 
 function doall2()
    writeBytes("100140000+80463B58",_G.intspeciesByte1,_G.intspeciesByte2)
-   writeBytes("100140000+80463CAC",_G.intspecies2Byte1,_G.intspecies2Byte2) 
+   writeBytes("100140000+80463CAC",_G.intspecies2Byte1,_G.intspecies2Byte2)
    if ((checkbox_getState(UDF1.CECheckbox1)) == 1) then
    writeBytes("100140000+80463C30",_G.svar1,_G.svar2)
    writeBytes("100140000+80463C34",_G.svar3,_G.svar4,_G.svar5,_G.svar6)
