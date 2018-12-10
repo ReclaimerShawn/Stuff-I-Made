@@ -1,2 +1,2 @@
-# My-Programs
+# My Programs
 Source Code for Programs I've made
