@@ -1,0 +1,40 @@
+UDF1.show()
+
+TrialEdit=[[Program has converted the map to work with Halo Trial Edition. You can close the tool now if you're finished.]]
+
+CustomEdit=[[Program has converted the map to work with Halo Custom Edition. You can close the tool now if you're finished.]]
+
+Help=[[This tool is used to convert Halo Custom Edition maps to Halo Trial Edition maps and vice-versa. Mainly this converter is used to convert Halo Custom Edition maps to work with Halo Map Tools so the maps can be modded. This serves as a replacement for Halo Map Version Converter, as it was often buggy and didn't even work for me.]]
+
+function CloseClick()
+  closeCE()
+  return caFree
+end
+
+UDF1.OnClose = CloseClick
+
+path = ""
+
+function CEButton3Click(sender)
+load_dialog = createOpenDialog(self)
+load_dialog.InitalDir = os.getenv('%USERPROFILE%')
+load_dialog.execute()
+_G.path = load_dialog.FileName
+openFileAsProcess(path, r)
+end
+
+function CEButton2Click(sender)
+writeBytes ("00000004", 97, 2)
+saveOpenedFile(path)
+showMessage(CustomEdit)
+end
+
+function CEButton1Click(sender)
+writeBytes ("00000004", 7, 0)
+saveOpenedFile(path)
+showMessage(TrialEdit)
+end
+
+function CEButton4Click(sender)
+showMessage(Help)
+end
