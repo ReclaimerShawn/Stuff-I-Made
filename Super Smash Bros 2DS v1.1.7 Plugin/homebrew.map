@@ -1,0 +1,568 @@
+Archive member included to satisfy reference by file (symbol)
+
+./lib\libc.a(lib_a-memcpy-stub.o)
+                              lib\rt.o (memcpy)
+./lib\libc.a(lib_a-memset.o)  gameplg.o (memset)
+./lib\libc.a(lib_a-strcpy.o)  gameplg.o (strcpy)
+./lib\libc.a(lib_a-strlen.o)  gameplg.o (strlen)
+
+Allocating common symbols
+Common symbol       size              file
+
+gamePluginMenu      0xc7c             gameplg.o
+IoBaseLcd           0x4               lib\main.o
+fsUserHandle        0x4               gameplg.o
+cheatEnabled        0x40              gameplg.o
+threadStack         0x4000            gameplg.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000100100                . = 0x100100
+                0x0000000000100100                . = ALIGN (0x4)
+
+.text           0x0000000000100100     0x2b54
+                0x0000000000100100                __text_start = .
+ bootloader.o(.text*)
+ .text          0x0000000000100100       0xb0 bootloader.o
+                0x0000000000100100                _Reset
+                0x000000000010017c                _ReturnToUser
+                0x0000000000100190                plgGetIoBase
+                0x0000000000100198                copyRemoteMemory
+ *(.text*)
+ .text          0x00000000001001b0      0x640 gameplg.o
+                0x00000000001001b0                getKey
+                0x00000000001001d0                waitKeyUp
+                0x0000000000100200                initMenu
+                0x0000000000100218                addMenuEntry
+                0x0000000000100278                updateMenu
+                0x00000000001002f0                scanMenu
+                0x0000000000100334                detectLanguage
+                0x000000000010033c                addCheatMenuEntry
+                0x0000000000100368                onCheatItemChanged
+                0x000000000010036c                freezeCheatValue
+                0x00000000001005e0                updateCheatEnableDisplay
+                0x0000000000100614                scanCheatMenu
+                0x0000000000100644                initCheatMenu
+                0x0000000000100738                gamePluginEntry
+ .text          0x00000000001007f0      0x144 lib\AC.o
+                0x00000000001007f0                ACU_cmd1
+                0x0000000000100840                ACU_cmd26
+                0x00000000001008a0                ACU_GetWifiStatus
+                0x00000000001008d8                ACU_WaitInternetConnection
+ .text          0x0000000000100934       0x30 lib\entry.o
+                0x0000000000100934                c_entry
+                0x0000000000100960                IRQHandler
+ .text          0x0000000000100964      0x50c lib\FS.o
+                0x0000000000100964                FSUSER_Initialize
+                0x0000000000100998                FSUSER_OpenFile
+                0x0000000000100a38                FSUSER_OpenFileDirectly
+                0x0000000000100af8                FSUSER_OpenArchive
+                0x0000000000100b7c                FSUSER_OpenDirectory
+                0x0000000000100c08                FSUSER_CloseArchive
+                0x0000000000100c58                FSFILE_Close
+                0x0000000000100c88                FSFILE_Read
+                0x0000000000100cf0                FSFILE_Write
+                0x0000000000100d60                FSFILE_GetSize
+                0x0000000000100da4                FSFILE_SetSize
+                0x0000000000100ddc                FSDIR_Read
+                0x0000000000100e40                FSDIR_Close
+ .text          0x0000000000100e70        0x0 lib\main.o
+ .text.startup  0x0000000000100e70       0x3c lib\main.o
+                0x0000000000100e70                main
+ *fill*         0x0000000000100eac        0x4 
+ .text          0x0000000000100eb0       0x10 lib\misc.o
+                0x0000000000100eb0                sleep
+ .text          0x0000000000100ec0       0x3c lib\OS.o
+                0x0000000000100ec0                OS_ConvertVaddr2Physaddr
+ .text          0x0000000000100efc       0xd4 lib\pm.o
+                0x0000000000100efc                dumpKernel
+                0x0000000000100f00                getCurrentProcessId
+                0x0000000000100f24                getCurrentProcessHandle
+                0x0000000000100f8c                protectRemoteMemory
+                0x0000000000100fb0                protectMemory
+ .text          0x0000000000100fd0      0x54c lib\rt.o
+                0x0000000000100fd0                rtInitLock
+                0x0000000000100fdc                rtAcquireLock
+                0x0000000000101010                rtReleaseLock
+                0x000000000010101c                rtAlignToPageSize
+                0x000000000010102c                rtGetPageOfAddress
+                0x0000000000101038                rtCheckRemoteMemoryRegionSafeForWrite
+                0x0000000000101088                rtSafeCopyMemory
+                0x00000000001010e0                rtRecvSocket
+                0x0000000000101140                rtSendSocket
+                0x000000000010119c                rtIntToPortNumber
+                0x00000000001011b8                rtGetFileSize
+                0x00000000001012a4                rtLoadFileToBuffer
+                0x00000000001013ec                rtGenerateJumpCode
+                0x0000000000101404                rtFlushInstructionCache
+                0x000000000010141c                rtInitHook
+                0x0000000000101494                rtEnableHook
+                0x00000000001014d8                rtDisableHook
+ .text          0x000000000010151c      0x10c lib\sharedfunc.o
+                0x000000000010151c                initSharedFunc
+ .text          0x0000000000101628      0xef8 lib\SOC.o
+                0x0000000000101664                socu_cmd1
+                0x00000000001016b4                SOC_Shutdown
+                0x00000000001016f0                SOC_Initialize
+                0x0000000000101758                SOC_GetErrno
+                0x0000000000101768                socket
+                0x00000000001017d0                closesocket
+                0x0000000000101830                shutdown
+                0x0000000000101894                listen
+                0x00000000001018f8                accept
+                0x00000000001019f4                bind
+                0x0000000000101ac4                connect
+                0x0000000000101b94                socuipc_cmd7
+                0x0000000000101cb0                socuipc_cmd8
+                0x0000000000101df0                socuipc_cmd9
+                0x0000000000101f00                socuipc_cmda
+                0x0000000000102014                recvfrom
+                0x0000000000102040                sendto
+                0x000000000010206c                recv
+                0x0000000000102088                send
+                0x00000000001020a4                getsockopt
+                0x0000000000102154                setsockopt
+                0x00000000001021dc                fcntl
+                0x00000000001022a4                sockatmark
+                0x0000000000102304                gethostid
+                0x0000000000102340                getsockname
+                0x0000000000102430                getpeername
+ .text          0x0000000000102520      0x118 lib\srv.o
+                0x0000000000102520                exitSrv
+                0x0000000000102538                srv_RegisterClient
+                0x0000000000102578                initSrv
+                0x00000000001025ac                srv_getServiceHandle
+ .text          0x0000000000102638       0x40 lib\stub.o
+                0x0000000000102638                showDbg
+                0x0000000000102640                nsDbgPrint
+                0x0000000000102648                plgRegisterMenuEntry
+                0x0000000000102650                plgGetSharedServiceHandle
+                0x0000000000102658                plgRequestMemory
+                0x0000000000102660                plgRegisterCallback
+                0x0000000000102668                xsprintf
+                0x0000000000102670                controlVideo
+ *fill*         0x0000000000102678        0x8 
+ .text          0x0000000000102680      0x2a0 lib\svc.o
+                0x0000000000102680                getThreadCommandBuffer
+                0x000000000010268c                svc_controlMemory
+                0x00000000001026ac                svc_exitProcess
+                0x00000000001026b4                svc_createThread
+                0x00000000001026d4                svc_exitThread
+                0x00000000001026dc                svc_sleepThread
+                0x00000000001026e4                svc_createMutex
+                0x00000000001026f8                svc_releaseMutex
+                0x0000000000102700                svc_releaseSemaphore
+                0x0000000000102714                svc_createEvent
+                0x0000000000102728                svc_signalEvent
+                0x0000000000102730                svc_clearEvent
+                0x0000000000102738                svc_createMemoryBlock
+                0x0000000000102750                svc_mapMemoryBlock
+                0x0000000000102758                svc_unmapMemoryBlock
+                0x0000000000102760                svc_arbitrateAddress
+                0x0000000000102768                svc_closeHandle
+                0x0000000000102770                svc_waitSynchronization1
+                0x0000000000102778                svc_waitSynchronizationN
+                0x0000000000102798                svc_getSystemTick
+                0x00000000001027a0                svc_getSystemInfo
+                0x00000000001027bc                svc_getProcessInfo
+                0x00000000001027d8                svc_connectToPort
+                0x00000000001027ec                svc_sendSyncRequest
+                0x00000000001027f4                svc_getProcessId
+                0x0000000000102808                svc_getThreadId
+                0x000000000010281c                svc_setThreadIdealProcessor
+                0x0000000000102824                svc_openThread
+                0x0000000000102838                svc_flushProcessDataCache
+                0x0000000000102840                svc_invalidateProcessDataCache
+                0x0000000000102848                svc_queryMemory
+                0x0000000000102850                svc_addCodeSegment
+                0x0000000000102858                svc_openProcess
+                0x000000000010286c                svc_controlProcessMemory
+                0x0000000000102884                svc_mapProcessMemory
+                0x000000000010288c                svc_startInterProcessDma
+                0x00000000001028ac                svc_getDmaState
+                0x00000000001028c0                svc_backDoor
+                0x00000000001028c8                svc_getProcessList
+                0x00000000001028dc                svc_getThreadList
+                0x00000000001028f0                svc_getThreadContext
+                0x00000000001028f8                svc_debugActiveProcess
+                0x000000000010290c                svc_readProcessMemory
+                0x0000000000102914                svc_writeProcessMemory
+ .text          0x0000000000102920       0xf0 ./lib\libc.a(lib_a-memcpy-stub.o)
+                0x0000000000102920                memcpy
+ .text          0x0000000000102a10       0xf4 ./lib\libc.a(lib_a-memset.o)
+                0x0000000000102a10                memset
+ .text          0x0000000000102b04       0xf0 ./lib\libc.a(lib_a-strcpy.o)
+                0x0000000000102b04                strcpy
+ .text          0x0000000000102bf4       0x60 ./lib\libc.a(lib_a-strlen.o)
+                0x0000000000102bf4                strlen
+
+.glue_7         0x0000000000102c54        0x0
+ .glue_7        0x0000000000102c54        0x0 linker stubs
+
+.glue_7t        0x0000000000102c54        0x0
+ .glue_7t       0x0000000000102c54        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000102c54        0x0
+ .vfp11_veneer  0x0000000000102c54        0x0 linker stubs
+
+.v4_bx          0x0000000000102c54        0x0
+ .v4_bx         0x0000000000102c54        0x0 linker stubs
+
+.plt            0x0000000000102c54        0x0
+ .plt           0x0000000000102c54        0x0 bootloader.o
+
+.iplt           0x0000000000102c54        0x0
+ .iplt          0x0000000000102c54        0x0 bootloader.o
+                0x0000000000102c54                . = ALIGN (0x4)
+
+.data           0x0000000000102c54       0x20
+ *(.data)
+ .data          0x0000000000102c54        0x0 bootloader.o
+ .data          0x0000000000102c54        0x4 gameplg.o
+                0x0000000000102c54                IoBasePad
+ .data          0x0000000000102c58        0x0 lib\AC.o
+ .data          0x0000000000102c58        0x0 lib\entry.o
+ .data          0x0000000000102c58        0x0 lib\FS.o
+ .data          0x0000000000102c58       0x1c lib\main.o
+                0x0000000000102c58                socuRet
+                0x0000000000102c5c                sdmcArchive
+ .data          0x0000000000102c74        0x0 lib\misc.o
+ .data          0x0000000000102c74        0x0 lib\OS.o
+ .data          0x0000000000102c74        0x0 lib\pm.o
+ .data          0x0000000000102c74        0x0 lib\rt.o
+ .data          0x0000000000102c74        0x0 lib\sharedfunc.o
+ .data          0x0000000000102c74        0x0 lib\SOC.o
+ .data          0x0000000000102c74        0x0 lib\srv.o
+ .data          0x0000000000102c74        0x0 lib\stub.o
+ .data          0x0000000000102c74        0x0 lib\svc.o
+ .data          0x0000000000102c74        0x0 ./lib\libc.a(lib_a-memcpy-stub.o)
+ .data          0x0000000000102c74        0x0 ./lib\libc.a(lib_a-memset.o)
+ .data          0x0000000000102c74        0x0 ./lib\libc.a(lib_a-strcpy.o)
+ .data          0x0000000000102c74        0x0 ./lib\libc.a(lib_a-strlen.o)
+
+.dynamic        0x0000000000102c74       0x88
+ .dynamic       0x0000000000102c74       0x88 bootloader.o
+                0x0000000000102c74                _DYNAMIC
+
+.got            0x0000000000102cfc        0x0
+ .got           0x0000000000102cfc        0x0 bootloader.o
+
+.got.plt        0x0000000000102cfc        0xc
+ .got.plt       0x0000000000102cfc        0xc bootloader.o
+                0x0000000000102cfc                _GLOBAL_OFFSET_TABLE_
+
+.data.rel.ro    0x0000000000102d08        0x0
+ .data.rel.ro   0x0000000000102d08        0x0 bootloader.o
+
+.igot.plt       0x0000000000102d08        0x0
+ .igot.plt      0x0000000000102d08        0x0 bootloader.o
+                0x0000000000102d08                . = ALIGN (0x4)
+                0x0000000000102d08                . = ALIGN (0x4)
+
+.rel.dyn        0x0000000000102d08      0x2e0
+ *(.__rel_dyn_start)
+ .__rel_dyn_start
+                0x0000000000102d08        0x0 bootloader.o
+ *(.rel*)
+ .rel.got       0x0000000000102d08        0x0 bootloader.o
+ .rel.plt       0x0000000000102d08        0x0 bootloader.o
+ .rel.bss       0x0000000000102d08        0x0 bootloader.o
+ .rel.data.rel.ro
+                0x0000000000102d08        0x0 bootloader.o
+ .rel.iplt      0x0000000000102d08        0x0 bootloader.o
+ .rel.text      0x0000000000102d08      0x2c8 bootloader.o
+ .rel.data      0x0000000000102fd0        0x8 bootloader.o
+ .rel.text.startup
+                0x0000000000102fd8       0x10 bootloader.o
+ *(.rel.*)
+ *(.__rel_dyn_end)
+ .__rel_dyn_end
+                0x0000000000102fe8        0x0 bootloader.o
+                0x0000000000102fe8                __code_end = .
+
+.interp         0x0000000000102fe8       0x11
+ .interp        0x0000000000102fe8       0x11 bootloader.o
+
+.gnu.version_d  0x0000000000102ffc        0x0
+ .gnu.version_d
+                0x0000000000102ffc        0x0 bootloader.o
+
+.gnu.version    0x0000000000102ffa        0x0
+ .gnu.version   0x0000000000102ffa        0x0 bootloader.o
+
+.gnu.version_r  0x0000000000102ffc        0x0
+ .gnu.version_r
+                0x0000000000102ffc        0x0 bootloader.o
+
+.dynsym         0x0000000000102ffc       0x30
+ .dynsym        0x0000000000102ffc       0x30 bootloader.o
+
+.dynstr         0x000000000010302c        0x1
+ .dynstr        0x000000000010302c        0x1 bootloader.o
+
+.hash           0x0000000000103030       0x18
+ .hash          0x0000000000103030       0x18 bootloader.o
+
+.rodata.str1.1  0x0000000000103048      0x28a
+ .rodata.str1.1
+                0x0000000000103048      0x1e8 gameplg.o
+ .rodata.str1.1
+                0x0000000000103230        0x5 lib\AC.o
+ .rodata.str1.1
+                0x0000000000103235        0x5 lib\main.o
+                                          0x1 (size before relaxing)
+ .rodata.str1.1
+                0x0000000000103235       0x1e lib\pm.o
+ .rodata.str1.1
+                0x0000000000103253       0x74 lib\rt.o
+ .rodata.str1.1
+                0x00000000001032c7        0x6 lib\SOC.o
+ .rodata.str1.1
+                0x00000000001032cd        0x5 lib\srv.o
+
+.rodata         0x00000000001032d2       0x4d
+ .rodata        0x00000000001032d2       0x4d lib\SOC.o
+                0x0000000000103320                . = ALIGN (0x4)
+
+.bss            0x0000000000103320     0x4cdc
+ *(.__bss_start)
+ .__bss_start   0x0000000000103320        0x0 bootloader.o
+                0x0000000000103320                __c_bss_start
+ *(.bss COMMON)
+ .bss           0x0000000000103320        0x0 bootloader.o
+ .bss           0x0000000000103320        0x4 gameplg.o
+                0x0000000000103320                isNewNtr
+ COMMON         0x0000000000103324     0x4cc0 gameplg.o
+                0x0000000000103324                gamePluginMenu
+                0x0000000000103fa0                fsUserHandle
+                0x0000000000103fa4                cheatEnabled
+                0x0000000000103fe4                threadStack
+ .bss           0x0000000000107fe4        0x0 lib\AC.o
+ .bss           0x0000000000107fe4        0x0 lib\entry.o
+ .bss           0x0000000000107fe4        0x0 lib\FS.o
+ .bss           0x0000000000107fe4        0x0 lib\main.o
+ COMMON         0x0000000000107fe4        0x4 lib\main.o
+                0x0000000000107fe4                IoBaseLcd
+ .bss           0x0000000000107fe8        0x0 lib\misc.o
+ .bss           0x0000000000107fe8        0x0 lib\OS.o
+ .bss           0x0000000000107fe8        0x8 lib\pm.o
+                0x0000000000107fe8                currentPid
+                0x0000000000107fec                hCurrentProcess
+ .bss           0x0000000000107ff0        0x0 lib\rt.o
+ .bss           0x0000000000107ff0        0x0 lib\sharedfunc.o
+ .bss           0x0000000000107ff0        0x8 lib\SOC.o
+                0x0000000000107ff0                SOCU_handle
+ .bss           0x0000000000107ff8        0x4 lib\srv.o
+                0x0000000000107ff8                srvHandle
+ .bss           0x0000000000107ffc        0x0 lib\stub.o
+ .bss           0x0000000000107ffc        0x0 lib\svc.o
+ .bss           0x0000000000107ffc        0x0 ./lib\libc.a(lib_a-memcpy-stub.o)
+ .bss           0x0000000000107ffc        0x0 ./lib\libc.a(lib_a-memset.o)
+ .bss           0x0000000000107ffc        0x0 ./lib\libc.a(lib_a-strcpy.o)
+ .bss           0x0000000000107ffc        0x0 ./lib\libc.a(lib_a-strlen.o)
+ *(.__bss_end)
+ .__bss_end     0x0000000000107ffc        0x0 bootloader.o
+                0x0000000000107ffc                __c_bss_end
+                0x0000000000107ffc                __end__ = .
+LOAD bootloader.o
+LOAD gameplg.o
+LOAD lib\AC.o
+LOAD lib\entry.o
+LOAD lib\FS.o
+LOAD lib\main.o
+LOAD lib\misc.o
+LOAD lib\OS.o
+LOAD lib\pm.o
+LOAD lib\rt.o
+LOAD lib\sharedfunc.o
+LOAD lib\SOC.o
+LOAD lib\srv.o
+LOAD lib\stub.o
+LOAD lib\svc.o
+LOAD ./lib\libc.a
+LOAD ./lib\libgcc.a
+OUTPUT(a.out elf32-littlearm)
+
+.dynbss         0x0000000000107ffc        0x0
+ .dynbss        0x0000000000107ffc        0x0 bootloader.o
+
+.ARM.attributes
+                0x0000000000000000       0x27
+ .ARM.attributes
+                0x0000000000000000       0x19 bootloader.o
+ .ARM.attributes
+                0x0000000000000019       0x2b gameplg.o
+ .ARM.attributes
+                0x0000000000000044       0x2b lib\AC.o
+ .ARM.attributes
+                0x000000000000006f       0x2b lib\entry.o
+ .ARM.attributes
+                0x000000000000009a       0x2b lib\FS.o
+ .ARM.attributes
+                0x00000000000000c5       0x2b lib\main.o
+ .ARM.attributes
+                0x00000000000000f0       0x19 lib\misc.o
+ .ARM.attributes
+                0x0000000000000109       0x2b lib\OS.o
+ .ARM.attributes
+                0x0000000000000134       0x2b lib\pm.o
+ .ARM.attributes
+                0x000000000000015f       0x2b lib\rt.o
+ .ARM.attributes
+                0x000000000000018a       0x2b lib\sharedfunc.o
+ .ARM.attributes
+                0x00000000000001b5       0x2b lib\SOC.o
+ .ARM.attributes
+                0x00000000000001e0       0x2b lib\srv.o
+ .ARM.attributes
+                0x000000000000020b       0x19 lib\stub.o
+ .ARM.attributes
+                0x0000000000000224       0x19 lib\svc.o
+ .ARM.attributes
+                0x000000000000023d       0x30 ./lib\libc.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x000000000000026d       0x30 ./lib\libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x000000000000029d       0x30 ./lib\libc.a(lib_a-strcpy.o)
+ .ARM.attributes
+                0x00000000000002cd       0x30 ./lib\libc.a(lib_a-strlen.o)
+
+.comment        0x0000000000000000       0x66
+ .comment       0x0000000000000000       0x22 gameplg.o
+                                         0x23 (size before relaxing)
+ .comment       0x0000000000000022       0x22 lib\AC.o
+                                         0x23 (size before relaxing)
+ .comment       0x0000000000000044       0x23 lib\entry.o
+ .comment       0x0000000000000044       0x23 lib\FS.o
+ .comment       0x0000000000000044       0x22 lib\main.o
+                                         0x23 (size before relaxing)
+ .comment       0x0000000000000066       0x23 lib\OS.o
+ .comment       0x0000000000000066       0x23 lib\pm.o
+ .comment       0x0000000000000066       0x23 lib\rt.o
+ .comment       0x0000000000000066       0x23 lib\sharedfunc.o
+ .comment       0x0000000000000066       0x23 lib\SOC.o
+ .comment       0x0000000000000066       0x23 lib\srv.o
+ .comment       0x0000000000000066       0x23 ./lib\libc.a(lib_a-memcpy-stub.o)
+ .comment       0x0000000000000066       0x23 ./lib\libc.a(lib_a-memset.o)
+ .comment       0x0000000000000066       0x23 ./lib\libc.a(lib_a-strcpy.o)
+ .comment       0x0000000000000066       0x23 ./lib\libc.a(lib_a-strlen.o)
+
+.debug_info     0x0000000000000000     0x518f
+ .debug_info    0x0000000000000000     0x1755 gameplg.o
+ .debug_info    0x0000000000001755      0x368 lib\AC.o
+ .debug_info    0x0000000000001abd      0x11f lib\entry.o
+ .debug_info    0x0000000000001bdc      0x8a9 lib\FS.o
+ .debug_info    0x0000000000002485      0x2a4 lib\main.o
+ .debug_info    0x0000000000002729       0xc0 lib\OS.o
+ .debug_info    0x00000000000027e9      0x335 lib\pm.o
+ .debug_info    0x0000000000002b1e      0xc82 lib\rt.o
+ .debug_info    0x00000000000037a0      0x335 lib\sharedfunc.o
+ .debug_info    0x0000000000003ad5     0x13dc lib\SOC.o
+ .debug_info    0x0000000000004eb1      0x2de lib\srv.o
+
+.debug_abbrev   0x0000000000000000     0x127d
+ .debug_abbrev  0x0000000000000000      0x42e gameplg.o
+ .debug_abbrev  0x000000000000042e      0x13f lib\AC.o
+ .debug_abbrev  0x000000000000056d       0xcc lib\entry.o
+ .debug_abbrev  0x0000000000000639      0x144 lib\FS.o
+ .debug_abbrev  0x000000000000077d      0x11c lib\main.o
+ .debug_abbrev  0x0000000000000899       0x6d lib\OS.o
+ .debug_abbrev  0x0000000000000906      0x15f lib\pm.o
+ .debug_abbrev  0x0000000000000a65      0x2aa lib\rt.o
+ .debug_abbrev  0x0000000000000d0f       0xfb lib\sharedfunc.o
+ .debug_abbrev  0x0000000000000e0a      0x304 lib\SOC.o
+ .debug_abbrev  0x000000000000110e      0x16f lib\srv.o
+
+.debug_loc      0x0000000000000000     0x2bf9
+ .debug_loc     0x0000000000000000      0x3bf gameplg.o
+ .debug_loc     0x00000000000003bf      0x1cc lib\AC.o
+ .debug_loc     0x000000000000058b       0x34 lib\entry.o
+ .debug_loc     0x00000000000005bf      0x7db lib\FS.o
+ .debug_loc     0x0000000000000d9a       0x5c lib\OS.o
+ .debug_loc     0x0000000000000df6       0xfa lib\pm.o
+ .debug_loc     0x0000000000000ef0      0x6b8 lib\rt.o
+ .debug_loc     0x00000000000015a8     0x152b lib\SOC.o
+ .debug_loc     0x0000000000002ad3      0x126 lib\srv.o
+
+.debug_aranges  0x0000000000000000      0x160
+ .debug_aranges
+                0x0000000000000000       0x20 gameplg.o
+ .debug_aranges
+                0x0000000000000020       0x20 lib\AC.o
+ .debug_aranges
+                0x0000000000000040       0x20 lib\entry.o
+ .debug_aranges
+                0x0000000000000060       0x20 lib\FS.o
+ .debug_aranges
+                0x0000000000000080       0x20 lib\main.o
+ .debug_aranges
+                0x00000000000000a0       0x20 lib\OS.o
+ .debug_aranges
+                0x00000000000000c0       0x20 lib\pm.o
+ .debug_aranges
+                0x00000000000000e0       0x20 lib\rt.o
+ .debug_aranges
+                0x0000000000000100       0x20 lib\sharedfunc.o
+ .debug_aranges
+                0x0000000000000120       0x20 lib\SOC.o
+ .debug_aranges
+                0x0000000000000140       0x20 lib\srv.o
+
+.debug_line     0x0000000000000000     0x1782
+ .debug_line    0x0000000000000000      0x69d gameplg.o
+ .debug_line    0x000000000000069d      0x12e lib\AC.o
+ .debug_line    0x00000000000007cb       0xe1 lib\entry.o
+ .debug_line    0x00000000000008ac      0x1d0 lib\FS.o
+ .debug_line    0x0000000000000a7c      0x114 lib\main.o
+ .debug_line    0x0000000000000b90       0xed lib\OS.o
+ .debug_line    0x0000000000000c7d      0x120 lib\pm.o
+ .debug_line    0x0000000000000d9d      0x27f lib\rt.o
+ .debug_line    0x000000000000101c      0x102 lib\sharedfunc.o
+ .debug_line    0x000000000000111e      0x4ed lib\SOC.o
+ .debug_line    0x000000000000160b      0x177 lib\srv.o
+
+.debug_str      0x0000000000000000     0x12c3
+ .debug_str     0x0000000000000000      0x9e2 gameplg.o
+                                        0xacf (size before relaxing)
+ .debug_str     0x00000000000009e2      0x111 lib\AC.o
+                                        0x1e9 (size before relaxing)
+ .debug_str     0x0000000000000af3       0x3c lib\entry.o
+                                        0x14a (size before relaxing)
+ .debug_str     0x0000000000000b2f      0x15c lib\FS.o
+                                        0x367 (size before relaxing)
+ .debug_str     0x0000000000000c8b       0xbb lib\main.o
+                                        0x266 (size before relaxing)
+ .debug_str     0x0000000000000d46       0x33 lib\OS.o
+                                        0x123 (size before relaxing)
+ .debug_str     0x0000000000000d79       0xb0 lib\pm.o
+                                        0x229 (size before relaxing)
+ .debug_str     0x0000000000000e29      0x1f5 lib\rt.o
+                                        0x4f0 (size before relaxing)
+ .debug_str     0x000000000000101e       0x1e lib\sharedfunc.o
+                                        0x22f (size before relaxing)
+ .debug_str     0x000000000000103c      0x23e lib\SOC.o
+                                        0x420 (size before relaxing)
+ .debug_str     0x000000000000127a       0x49 lib\srv.o
+                                        0x1e1 (size before relaxing)
+
+.debug_frame    0x0000000000000000      0xa44
+ .debug_frame   0x0000000000000000      0x148 gameplg.o
+ .debug_frame   0x0000000000000148       0x8c lib\AC.o
+ .debug_frame   0x00000000000001d4       0x30 lib\entry.o
+ .debug_frame   0x0000000000000204      0x1ac lib\FS.o
+ .debug_frame   0x00000000000003b0       0x28 lib\main.o
+ .debug_frame   0x00000000000003d8       0x20 lib\OS.o
+ .debug_frame   0x00000000000003f8       0x90 lib\pm.o
+ .debug_frame   0x0000000000000488      0x1a8 lib\rt.o
+ .debug_frame   0x0000000000000630       0x2c lib\sharedfunc.o
+ .debug_frame   0x000000000000065c      0x370 lib\SOC.o
+ .debug_frame   0x00000000000009cc       0x78 lib\srv.o
+
+.debug_ranges   0x0000000000000000       0x60
+ .debug_ranges  0x0000000000000000       0x10 lib\main.o
+ .debug_ranges  0x0000000000000010       0x50 lib\rt.o
