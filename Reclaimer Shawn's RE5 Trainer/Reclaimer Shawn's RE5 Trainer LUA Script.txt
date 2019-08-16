@@ -27,6 +27,7 @@ tabbyfight = Beta testing
 Raz0r = For his patch to allow character swapping to work. Also, character IDs and fireable LTD.
 Sectus = Item Indexes
 BlackBlood of RE Modding Boards = Invincibility
+STN of CEForums = XLIVE Disable/Anti-Debug Fix
 Dark Byte and the Cheat Engine Community = For creating Cheat Engine and helping me to learn along the way.
 ]]
 
@@ -50,6 +51,7 @@ this if they have Standard.
 ]]
 
 ItemHack = 0
+LTDHack = 0
 
 UDF1.show()
 getAutoAttachList().add("re5dx9.exe")
@@ -5188,243 +5190,243 @@ function CEComboBox22Select(sender)
 end
 
 function CEButton1Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1f",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1f",15)
 end
 
 function CEButton2Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1c",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1c",255)
 end
 
 function CEButton3Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1d",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1d",254)
 end
 
 function CEButton4Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a4b",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a4b",15)
 end
 
 function CEButton5Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a48",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a48",255)
 end
 
 function CEButton6Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a49",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a49",254)
 end
 
 function CEButton7Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a77",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a77",15)
 end
 
 function CEButton8Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a74",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a74",255)
 end
 
 function CEButton9Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a75",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a75",254)
 end
 
 function CEButton10Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa3",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa3",15)
 end
 
 function CEButton11Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa0",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa0",255)
 end
 
 function CEButton12Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa1",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa1",254)
 end
 
 function CEButton13Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acf",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acf",15)
 end
 
 function CEButton14Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acc",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acc",255)
 end
 
 function CEButton15Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acd",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acd",254)
 end
 
 function CEButton16Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24afb",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24afb",15)
 end
 
 function CEButton17Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af8",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af8",255)
 end
 
 function CEButton18Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af9",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af9",254)
 end
 
 function CEButton19Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b27",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b27",15)
 end
 
 function CEButton20Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b24",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b24",255)
 end
 
 function CEButton21Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b25",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b25",254)
 end
 
 function CEButton22Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b53",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b53",15)
 end
 
 function CEButton23Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b50",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b50",255)
 end
 
 function CEButton24Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b51",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b51",254)
 end
 
 function CEButton25Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7f",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7f",15)
 end
 
 function CEButton26Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7c",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7c",255)
 end
 
 function CEButton27Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7d",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7d",254)
 end
 
 function CEButton28Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24bab",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24bab",15)
 end
 
 function CEButton29Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba8",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba8",255)
 end
 
 function CEButton30Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba9",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba9",254)
 end
 
 function CEButton31Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3f",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3f",15)
 end
 
 function CEButton32Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3c",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3c",255)
 end
 
 function CEButton33Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3d",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3d",254)
 end
 
 function CEButton34Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e6b",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e6b",15)
 end
 
 function CEButton35Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e68",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e68",255)
 end
 
 function CEButton36Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e69",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e69",254)
 end
 
 function CEButton37Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e97",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e97",15)
 end
 
 function CEButton38Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e94",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e94",255)
 end
 
 function CEButton39Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e95",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e95",254)
 end
 
 function CEButton40Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec3",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec3",15)
 end
 
 function CEButton41Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec0",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec0",255)
 end
 
 function CEButton42Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec1",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec1",254)
 end
 
 function CEButton43Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eef",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eef",15)
 end
 
 function CEButton44Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eec",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eec",255)
 end
 
 function CEButton45Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eed",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eed",254)
 end
 
 function CEButton46Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f1b",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f1b",15)
 end
 
 function CEButton47Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f18",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f18",255)
 end
 
 function CEButton48Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f19",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f19",254)
 end
 
 function CEButton49Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f47",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f47",15)
 end
 
 function CEButton50Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f44",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f44",255)
 end
 
 function CEButton51Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f45",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f45",254)
 end
 
 function CEButton52Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f73",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f73",15)
 end
 
 function CEButton53Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f70",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f70",255)
 end
 
 function CEButton54Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f71",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f71",254)
 end
 
 function CEButton55Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9f",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9f",15)
 end
 
 function CEButton56Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9c",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9c",255)
 end
 
 function CEButton57Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9d",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9d",254)
 end
 
 function CEButton58Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fcb",15)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fcb",15)
 end
 
 function CEButton59Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc8",255)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc8",255)
 end
 
 function CEButton60Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc9",254)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc9",254)
 end
 
 function CEButton61Click(sender)
@@ -5432,7 +5434,7 @@ function CEButton61Click(sender)
 end
 
 function CEButton62Click(sender)
-getAutoAttachList().add("re5dx9.exe")
+   getAutoAttachList().add("re5dx9.exe")
 end
 
 function CEButton63Click(sender)
@@ -5440,11 +5442,11 @@ function CEButton63Click(sender)
 end
 
 function CEButton64Click(sender)
-      writeInteger("[re5dx9.exe+00DA23D8]+1c0",9999999)
+   writeInteger("[re5dx9.exe+00DA23D8]+1c0",9999999)
 end
 
 function CEButton65Click(sender)
-      writeInteger("[re5dx9.exe+00DA23D8]+1c4",9999999)
+   writeInteger("[re5dx9.exe+00DA23D8]+1c4",9999999)
 end
 
 function CEComboBox11Select(sender)
@@ -5567,17 +5569,12 @@ end
 
 function CECheckbox11Change(sender)
    if ((checkbox_getState(UDF1.CECheckbox11)) == 1) then
-             CheatEntry = getAddressList().getMemoryRecord(0)
-             memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(0)
+      memoryrecord_freeze(CheatEntry)
     else
-             CheatEntry = getAddressList().getMemoryRecord(0)
-             memoryrecord_unfreeze(CheatEntry)    
+      CheatEntry = getAddressList().getMemoryRecord(0)
+      emoryrecord_unfreeze(CheatEntry)
     end
-end
-
-function LTDTimer()
-             writeBytes("[[re5dx9.exe+00DA2944]+d5a10]+1c68",255, 235, 47, 45)
-             writeBytes("[[re5dx9.exe+00E243B4]+ec]+4c08",255, 235, 47, 45)
 end
 
 function CEButton66Click(sender)
@@ -5589,109 +5586,154 @@ function CEButton67Click(sender)
 end
 
 function CEButton68Click(sender)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1f",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1c",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1d",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a4b",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a48",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a49",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a77",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a74",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a75",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa3",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa0",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa1",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acf",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acc",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acd",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24afb",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af8",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af9",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b27",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b24",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b25",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b53",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b50",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b51",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7f",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7c",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7d",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24bab",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba8",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba9",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3f",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3c",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3d",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e6b",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e68",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e69",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e97",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e94",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e95",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec3",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec0",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec1",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eef",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eec",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eed",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f1b",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f18",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f19",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f47",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f44",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f45",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f73",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f70",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f71",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9f",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9c",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9d",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fcb",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc8",0)
-      writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc9",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1f",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1c",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a1d",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a4b",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a48",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a49",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a77",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a74",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24a75",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa3",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa0",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24aa1",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acf",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acc",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24acd",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24afb",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af8",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24af9",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b27",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b24",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b25",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b53",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b50",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b51",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7f",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7c",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24b7d",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24bab",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba8",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ba9",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3f",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3c",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e3d",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e6b",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e68",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e69",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e97",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e94",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24e95",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec3",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec0",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24ec1",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eef",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eec",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24eed",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f1b",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f18",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f19",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f47",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f44",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f45",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f73",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f70",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f71",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9f",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9c",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24f9d",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fcb",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc8",0)
+   writeInteger("[[re5dx9.exe+00DA23D8]+399c0]+24fc9",0)
 end
 
 function CECheckbox23Change(sender)
    if ((checkbox_getState(UDF1.CECheckbox23)) == 1) then
-
-    t=createTimer(nil)
-    timer_setInterval(t, 1)
-    timer_onTimer(t, LTDTimer)
+      CheatEntry = getAddressList().getMemoryRecord(2)
+      memoryrecord_freeze(CheatEntry)
     else
-      t.destroy();
-      t=nil
+      CheatEntry = getAddressList().getMemoryRecord(2)
+      memoryrecord_unfreeze(CheatEntry)
     end
 end
 
 function CEButton69Click(sender)
-             CheatEntry = getAddressList().getMemoryRecord(1)
-             memoryrecord_freeze(CheatEntry)
+   if _G.LTDHack == 0 then
+      CheatEntry = getAddressList().getMemoryRecord(1)
+      memoryrecord_freeze(CheatEntry)
+      _G.LTDHack = 1
+   else
+      CheatEntry = getAddressList().getMemoryRecord(1)
+      memoryrecord_freeze(CheatEntry)
+      _G.LTDHack = 0
+   end
 end
 
 function CEButton71Click(sender)
-if _G.ItemHack == 0 then
-writeBytes("[[re5dx9.exe+00E243B4]+ec]+21a8",52,01)
-writeBytes("[[re5dx9.exe+00E243B4]+ec]+21c5",255,0,15)
-writeBytes("[[re5dx9.exe+00E243B4]+ec]+21d8",26,01)
-writeBytes("[[re5dx9.exe+00E243B4]+ec]+21f5",255,0,15)
-CheatEntry = getAddressList().getMemoryRecord(5)
-memoryrecord_freeze(CheatEntry)
-CheatEntry = getAddressList().getMemoryRecord(6)
-memoryrecord_freeze(CheatEntry)
-CheatEntry = getAddressList().getMemoryRecord(7)
-memoryrecord_freeze(CheatEntry)
-CheatEntry = getAddressList().getMemoryRecord(8)
-memoryrecord_freeze(CheatEntry)
-_G.ItemHack = 1
-else
-CheatEntry = getAddressList().getMemoryRecord(5)
-memoryrecord_unfreeze(CheatEntry)
-CheatEntry = getAddressList().getMemoryRecord(6)
-memoryrecord_unfreeze(CheatEntry)
-CheatEntry = getAddressList().getMemoryRecord(7)
-memoryrecord_unfreeze(CheatEntry)
-CheatEntry = getAddressList().getMemoryRecord(8)
-memoryrecord_unfreeze(CheatEntry)
-_G.ItemHack = 0
-end
+   if _G.ItemHack == 0 then
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+21a8",52,01)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+21c5",255,0,15)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+21d8",26,01)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+21f5",255,0,15)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+2208",13,01)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+2225",255,0,15)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+c428",25,01)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+c445",255,255,15)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+c458",27,01)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+c475",255,0,15)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+c488",37,01)
+      writeBytes("[[re5dx9.exe+00E243B4]+ec]+c4a5",255,0,15)
+      CheatEntry = getAddressList().getMemoryRecord(6)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(7)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(8)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(9)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(10)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(11)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(12)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(13)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(14)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(15)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(16)
+      memoryrecord_freeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(17)
+      memoryrecord_freeze(CheatEntry)
+      _G.ItemHack = 1
+   else
+      CheatEntry = getAddressList().getMemoryRecord(6)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(7)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(8)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(9)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(10)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(11)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(12)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(13)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(14)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(15)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(16)
+      memoryrecord_unfreeze(CheatEntry)
+      CheatEntry = getAddressList().getMemoryRecord(17)
+      memoryrecord_unfreeze(CheatEntry)
+      _G.ItemHack = 0
+   end
 end
