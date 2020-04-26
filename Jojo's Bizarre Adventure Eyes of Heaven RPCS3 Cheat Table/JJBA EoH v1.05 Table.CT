@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"Character Addresses"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Find Battle Character Addresses"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscan(CharAddr, 00 01 44 21 AC BD 44 08 AC 6B 00 00 00 00 3F 80 01 A4 00 00 00 00 43 62 AD 92 43 D8 AD 71 C1 98 00 00 40 19 9B)
+label(_CharAddr)
+registersymbol(_CharAddr)
+
+CharAddr:
+_CharAddr:
+
+[DISABLE]
+CharAddr:
+_CharAddr:
+db 01
+
+unregistersymbol(_CharAddr)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2</ID>
+              <Description>"Player 1 Character Address"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">*:Invalid
+106:Heaven Ascension DIO 2nd Form
+104:Jotaro Kujo (Part 4)
+100:Heaven Ascension DIO 1st Form
+94:Joshu Higashikata
+92:Alternate World Diego
+89:Mariah
+86:Pucci, Awaiting the New Moon
+83:N'doul
+76:Pet Shop
+75:Diego Brando
+73:Weather Report
+72:Yukako Yamagishi
+71:Robert E.O. Speedwagon
+68:Josuke Higashikata 8
+66:Funny Valentine
+65:Johnny Joestar
+63:Narciso Anasui
+61:Enrico Pucci
+59:Ermes Costello
+57:Jolyne Cujoh
+55:Panacotta Fugo
+54:Narancia Ghirga
+52:Diavolo
+51:Guido Mista
+49:Bruno Bucciarati
+47:Giorno Giovanna
+46:Shigekiyo Yangu
+44:Kosaku Kawajiri
+42:Yoshikage Kira
+40:Akira Otoishi
+38:Okuyasu Nijimura
+36:Rohan Kishibe
+34:Koichi Hirose
+32:Iggy
+31:Old Joseph Joestar
+30:Vanilla Ice
+29:Hol Horse
+27:Muhammad Avdol
+26:Kars
+25:Wamuu
+24:Esidisi
+23:Dio Brando
+22:Lisa Lisa
+21:Will A. Zeppeli
+19:Josuke Higashikata 4
+17:Jean Pierre Polnareff
+16:Rudol von Stroheim
+14:Trish Una
+13:Caesar Anthonio Zeppeli
+12:Joseph Joestar
+5:Jonathan Joestar
+4:Gyro Zeppeli
+3:Noriaki Kakyoin
+2:DIO
+1:Jotaro Kujo
+0:Unselected
+</DropDownList>
+              <VariableType>Byte</VariableType>
+              <Address>_CharAddr+FFFFFFF5</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>3</ID>
+              <Description>"Player 2 Character Address"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">*:Invalid
+106:Heaven Ascension DIO 2nd Form
+104:Jotaro Kujo (Part 4)
+100:Heaven Ascension DIO 1st Form
+94:Joshu Higashikata
+92:Alternate World Diego
+89:Mariah
+86:Pucci, Awaiting the New Moon
+83:N'doul
+76:Pet Shop
+75:Diego Brando
+73:Weather Report
+72:Yukako Yamagishi
+71:Robert E.O. Speedwagon
+68:Josuke Higashikata 8
+66:Funny Valentine
+65:Johnny Joestar
+63:Narciso Anasui
+61:Enrico Pucci
+59:Ermes Costello
+57:Jolyne Cujoh
+55:Panacotta Fugo
+54:Narancia Ghirga
+52:Diavolo
+51:Guido Mista
+49:Bruno Bucciarati
+47:Giorno Giovanna
+46:Shigekiyo Yangu
+44:Kosaku Kawajiri
+42:Yoshikage Kira
+40:Akira Otoishi
+38:Okuyasu Nijimura
+36:Rohan Kishibe
+34:Koichi Hirose
+32:Iggy
+31:Old Joseph Joestar
+30:Vanilla Ice
+29:Hol Horse
+27:Muhammad Avdol
+26:Kars
+25:Wamuu
+24:Esidisi
+23:Dio Brando
+22:Lisa Lisa
+21:Will A. Zeppeli
+19:Josuke Higashikata 4
+17:Jean Pierre Polnareff
+16:Rudol von Stroheim
+14:Trish Una
+13:Caesar Anthonio Zeppeli
+12:Joseph Joestar
+5:Jonathan Joestar
+4:Gyro Zeppeli
+3:Noriaki Kakyoin
+2:DIO
+1:Jotaro Kujo
+0:Unselected
+</DropDownList>
+              <VariableType>Byte</VariableType>
+              <Address>_CharAddr+FFFFFFF5+49C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>4</ID>
+              <Description>"Player 3 Character Address"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">*:Invalid
+106:Heaven Ascension DIO 2nd Form
+104:Jotaro Kujo (Part 4)
+100:Heaven Ascension DIO 1st Form
+94:Joshu Higashikata
+92:Alternate World Diego
+89:Mariah
+86:Pucci, Awaiting the New Moon
+83:N'doul
+76:Pet Shop
+75:Diego Brando
+73:Weather Report
+72:Yukako Yamagishi
+71:Robert E.O. Speedwagon
+68:Josuke Higashikata 8
+66:Funny Valentine
+65:Johnny Joestar
+63:Narciso Anasui
+61:Enrico Pucci
+59:Ermes Costello
+57:Jolyne Cujoh
+55:Panacotta Fugo
+54:Narancia Ghirga
+52:Diavolo
+51:Guido Mista
+49:Bruno Bucciarati
+47:Giorno Giovanna
+46:Shigekiyo Yangu
+44:Kosaku Kawajiri
+42:Yoshikage Kira
+40:Akira Otoishi
+38:Okuyasu Nijimura
+36:Rohan Kishibe
+34:Koichi Hirose
+32:Iggy
+31:Old Joseph Joestar
+30:Vanilla Ice
+29:Hol Horse
+27:Muhammad Avdol
+26:Kars
+25:Wamuu
+24:Esidisi
+23:Dio Brando
+22:Lisa Lisa
+21:Will A. Zeppeli
+19:Josuke Higashikata 4
+17:Jean Pierre Polnareff
+16:Rudol von Stroheim
+14:Trish Una
+13:Caesar Anthonio Zeppeli
+12:Joseph Joestar
+5:Jonathan Joestar
+4:Gyro Zeppeli
+3:Noriaki Kakyoin
+2:DIO
+1:Jotaro Kujo
+0:Unselected
+</DropDownList>
+              <VariableType>Byte</VariableType>
+              <Address>_CharAddr+FFFFFFF5+938</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5</ID>
+              <Description>"Player 4 Character Address"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">*:Invalid
+106:Heaven Ascension DIO 2nd Form
+104:Jotaro Kujo (Part 4)
+100:Heaven Ascension DIO 1st Form
+94:Joshu Higashikata
+92:Alternate World Diego
+89:Mariah
+86:Pucci, Awaiting the New Moon
+83:N'doul
+76:Pet Shop
+75:Diego Brando
+73:Weather Report
+72:Yukako Yamagishi
+71:Robert E.O. Speedwagon
+68:Josuke Higashikata 8
+66:Funny Valentine
+65:Johnny Joestar
+63:Narciso Anasui
+61:Enrico Pucci
+59:Ermes Costello
+57:Jolyne Cujoh
+55:Panacotta Fugo
+54:Narancia Ghirga
+52:Diavolo
+51:Guido Mista
+49:Bruno Bucciarati
+47:Giorno Giovanna
+46:Shigekiyo Yangu
+44:Kosaku Kawajiri
+42:Yoshikage Kira
+40:Akira Otoishi
+38:Okuyasu Nijimura
+36:Rohan Kishibe
+34:Koichi Hirose
+32:Iggy
+31:Old Joseph Joestar
+30:Vanilla Ice
+29:Hol Horse
+27:Muhammad Avdol
+26:Kars
+25:Wamuu
+24:Esidisi
+23:Dio Brando
+22:Lisa Lisa
+21:Will A. Zeppeli
+19:Josuke Higashikata 4
+17:Jean Pierre Polnareff
+16:Rudol von Stroheim
+14:Trish Una
+13:Caesar Anthonio Zeppeli
+12:Joseph Joestar
+5:Jonathan Joestar
+4:Gyro Zeppeli
+3:Noriaki Kakyoin
+2:DIO
+1:Jotaro Kujo
+0:Unselected
+</DropDownList>
+              <VariableType>Byte</VariableType>
+              <Address>_CharAddr+FFFFFFF5+DD4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Find Overworld Character Address"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscan(CharAddr2, 00 01 44 21 AC BD 44 08 AC 6B 00 00 00 00 3F 80 01 A4 00 00 00 01 44 21 AC BD 44 08 AC 6B 00 00 00 00 3F 80 01)
+label(_CharAddr2)
+registersymbol(_CharAddr2)
+
+CharAddr2:
+_CharAddr2:
+
+[DISABLE]
+unregistersymbol(_CharAddr2)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9</ID>
+              <Description>"Overworld Character Address"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">*:Invalid
+106:Heaven Ascension DIO 2nd Form
+104:Jotaro Kujo (Part 4)
+100:Heaven Ascension DIO 1st Form
+94:Joshu Higashikata
+92:Alternate World Diego
+89:Mariah
+86:Pucci, Awaiting the New Moon
+83:N'doul
+76:Pet Shop
+75:Diego Brando
+73:Weather Report
+72:Yukako Yamagishi
+71:Robert E.O. Speedwagon
+68:Josuke Higashikata 8
+66:Funny Valentine
+65:Johnny Joestar
+63:Narciso Anasui
+61:Enrico Pucci
+59:Ermes Costello
+57:Jolyne Cujoh
+55:Panacotta Fugo
+54:Narancia Ghirga
+52:Diavolo
+51:Guido Mista
+49:Bruno Bucciarati
+47:Giorno Giovanna
+46:Shigekiyo Yangu
+44:Kosaku Kawajiri
+42:Yoshikage Kira
+40:Akira Otoishi
+38:Okuyasu Nijimura
+36:Rohan Kishibe
+34:Koichi Hirose
+32:Iggy
+31:Old Joseph Joestar
+30:Vanilla Ice
+29:Hol Horse
+27:Muhammad Avdol
+26:Kars
+25:Wamuu
+24:Esidisi
+23:Dio Brando
+22:Lisa Lisa
+21:Will A. Zeppeli
+19:Josuke Higashikata 4
+17:Jean Pierre Polnareff
+16:Rudol von Stroheim
+14:Trish Una
+13:Caesar Anthonio Zeppeli
+12:Joseph Joestar
+5:Jonathan Joestar
+4:Gyro Zeppeli
+3:Noriaki Kakyoin
+2:DIO
+1:Jotaro Kujo
+0:Unselected
+</DropDownList>
+              <VariableType>Byte</VariableType>
+              <Address>_CharAddr2+FFFFFFF5</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"Player 1 R1 Timers"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Find Jotaro/The World Diego/DIO R1 Timer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscan(JotaroAddr, 63 3E ?? ?? ?? FF FF FF FF 00 00 00)
+label(_JotaroAddr)
+registersymbol(_JotaroAddr)
+
+JotaroAddr:
+_JotaroAddr:
+
+[DISABLE]
+_JotaroAddr+B:
+db 01
+
+unregistersymbol(_JotaroAddr)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"Jotaro/The World Diego/DIO R1 Timer"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_JotaroAddr+FFFFFFBD</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Find Giorno/Polnareff/Diavolo R1 Timer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscan(GiornoAddr, 63 3F ?E 38 E4 FF FF FF FF 00 00 00)
+label(_GiornoAddr)
+registersymbol(_GiornoAddr)
+
+GiornoAddr:
+_GiornoAddr:
+
+[DISABLE]
+_GiornoAddr+B:
+db 01
+
+unregistersymbol(_GiornoAddr)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>25</ID>
+              <Description>"Giorno/Polnareff/Diavolo R1 Timer"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_GiornoAddr+FFFFFFBD</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"Find Weather Report/Vanilla Ice/Wamuu/Kars R1 Timer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscan(WRAddr, 63 3F ?5 55 55 FF FF FF FF 00 00 00)
+label(_WRAddr)
+registersymbol(_WRAddr)
+
+WRAddr:
+_WRAddr:
+
+[DISABLE]
+_WRAddr+B:
+db 01
+
+unregistersymbol(_WRAddr)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>30</ID>
+              <Description>"Weather Report/Vanilla Ice/Wamuu/Kars R1 Timer"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_WRAddr+FFFFFFBD</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"Find Esidisi R1 Timer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscan(EsidisiAddr, 63 40 0E 38 E4 FF FF FF FF 00 00 00)
+label(_EsidisiAddr)
+registersymbol(_EsidisiAddr)
+
+EsidisiAddr:
+_EsidisiAddr:
+
+[DISABLE]
+_EsidisiAddr+B:
+db 01
+
+unregistersymbol(_EsidisiAddr)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>33</ID>
+              <Description>"Esidisi R1 Timer"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_EsidisiAddr+FFFFFFBD</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Find HP Addresses"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscan(HPAddr, 00 93 02 0F 7B 68 30 0B 00 F0 01 00 00)
+label(_HPAddr)
+registersymbol(_HPAddr)
+
+HPAddr:
+_HPAddr:
+
+aobscan(HPTwoAddr, 00 93 02 0F 7B 68 30 0B 01 90 01 00 00)
+label(_HPTwoAddr)
+registersymbol(_HPTwoAddr)
+
+HPTwoAddr:
+_HPTwoAddr:
+
+aobscan(HPThreeAddr, 00 93 02 0F 7B 68 30 0B 02 30 01 00 00)
+label(_HPThreeAddr)
+registersymbol(_HPThreeAddr)
+
+HPThreeAddr:
+_HPThreeAddr:
+
+aobscan(HPFourAddr, 00 93 02 0F 7B 68 30 0B 02 D0 01 00 00)
+label(_HPFourAddr)
+registersymbol(_HPFourAddr)
+
+HPFourAddr:
+_HPFourAddr:
+
+[DISABLE]
+_HPAddr+C:
+db 01
+
+unregistersymbol(_HPAddr)
+
+_HPTwoAddr+C:
+db 01
+
+unregistersymbol(_HPTwoAddr)
+
+_HPThreeAddr+C:
+db 01
+
+unregistersymbol(_HPThreeAddr)
+
+_HPFourAddr+C:
+db 01
+
+unregistersymbol(_HPFourAddr)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"Player 1 HP Address"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_HPAddr+10000000E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"Player 2 HP Address"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_HPTwoAddr+10000000E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>53</ID>
+          <Description>"Player 3 HP Address"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_HPThreeAddr+10000000E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>56</ID>
+          <Description>"Player 4 HP Address"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_HPFourAddr+10000000E</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"Find Dual Addresses"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscan(DualAddr, 32 ?? ?? ?? 00 00 00 00 02 07 E4 78)
+label(_DualAddr)
+registersymbol(_DualAddr)
+
+DualAddr:
+_DualAddr:
+
+[DISABLE]
+unregistersymbol(_DualAddr)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>45</ID>
+          <Description>"DHA Address"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_DualAddr+FFFFFFF3</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"Dual Combo Address"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_DualAddr+FFFFFFFB</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>59</ID>
+      <Description>"Find Player 1 Energy Address"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscan(EnergyAddr, 00 83 02 0F 7C 10 30 0B 00 F0 01 00 00)
+label(_EnergyAddr)
+registersymbol(_EnergyAddr)
+
+EnergyAddr:
+_EnergyAddr:
+
+[DISABLE]
+_EnergyAddr+C:
+db 01
+
+unregistersymbol(_EnergyAddr)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>60</ID>
+          <Description>"Player 1 Energy Address"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>_EnergyAddr+10000000E</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+  <LuaScript>dbk_initialize()
+
+openProcess([[cheatengine-x86_64.exe]])
+reinitializeSymbolhandler()
+
+autoAssemble([[
+alloc(NewVirtualProtectEx,256, VirtualProtectEx )
+alloc(OriginalVirtualProtectEx, 8, VirtualProtectEx)
+registersymbol(NewVirtualProtectEx)
+registersymbol(OriginalVirtualProtectEx)
+label(notself)
+NewVirtualProtectEx:
+cmp ecx,ffffffff
+jne short notself
+
+
+jmp [OriginalVirtualProtectEx]
+
+
+notself:
+xor rax,rax
+ret
+
+]])
+
+s=generateAPIHookScript("VirtualProtectEx", "NewVirtualProtectEx", "OriginalVirtualProtectEx")
+
+--stupid bug in generateAPIHookScript forgets the alloc originalcall0
+s=[[alloc(originalcall0, 64, VirtualProtectEx)
+]]..s
+
+autoAssemble(s)
+
+dbk_useKernelmodeOpenProcess()
+dbk_useKernelmodeProcessMemoryAccess()
+</LuaScript>
+</CheatTable>
