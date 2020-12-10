@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>52</ID>
+      <Description>"Pokemon 1 Name 1"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>9</ByteLength>
+      <Address>_EnemyData+657F</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>53</ID>
+      <Description>"Pokemon 1 Name 2"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>9</ByteLength>
+      <Address>_EnemyData+6595</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>56</ID>
+      <Description>"Pokemon 1 Species"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6550</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>58</ID>
+      <Description>"Pokemon 1 Current HP"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65DA</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>59</ID>
+      <Description>"Pokemon 1 Base HP"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65DC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>60</ID>
+      <Description>"Pokemon 1 Base ATK"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65DE</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>61</ID>
+      <Description>"Pokemon 1 Base DEF"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>62</ID>
+      <Description>"Pokemon 1 Base SPATK"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65E2</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>63</ID>
+      <Description>"Pokemon 1 Base SPDEF"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65E4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>64</ID>
+      <Description>"Pokemon 1 Base SPD"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65E6</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>73</ID>
+      <Description>"Pokemon 1 SID TID"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>79</ID>
+      <Description>"Pokemon 1 PID"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6554</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>89</ID>
+      <Description>"Pokemon 1 Shadow Flag Part 1"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6628</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>90</ID>
+      <Description>"Pokemon 1 Shadow Flag Part 2"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+662C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>122</ID>
+      <Description>"Pokemon 1 Hyper Mode Flag"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+6639</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>91</ID>
+      <Description>"Pokemon 1 Ability"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+73A5</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>92</ID>
+      <Description>"Pokemon 1 Type 1"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+73A1</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>93</ID>
+      <Description>"Pokemon 1 Type 2"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+73A3</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>97</ID>
+      <Description>"Pokemon 1 Level"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+65B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>99</ID>
+      <Description>"Pokemon 1 Move 1"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65C8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"Pokemon 1 Move 2"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65CC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>101</ID>
+      <Description>"Pokemon 1 Move 3"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65D0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>105</ID>
+      <Description>"Pokemon 1 Move 4"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65D4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>107</ID>
+      <Description>"Pokemon 1 EXP"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+65AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>123</ID>
+      <Description>"Pokemon 1 Obedience Bit"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+6648</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>54</ID>
+      <Description>"Pokemon 2 Name 1"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>9</ByteLength>
+      <Address>_EnemyData+66D3</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>55</ID>
+      <Description>"Pokemon 2 Name 2"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>9</ByteLength>
+      <Address>_EnemyData+66E9</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>57</ID>
+      <Description>"Pokemon 2 Species"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+66A4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>65</ID>
+      <Description>"Pokemon 2 Current HP"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+672E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>71</ID>
+      <Description>"Pokemon 2 Base HP"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6730</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>66</ID>
+      <Description>"Pokemon 2 Base ATK"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6732</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>67</ID>
+      <Description>"Pokemon 2 Base DEF"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6734</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>68</ID>
+      <Description>"Pokemon 2 Base SPATK"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6736</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>69</ID>
+      <Description>"Pokemon 2 Base SPDEF"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6738</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>70</ID>
+      <Description>"Pokemon 2 Base SPD"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+673A</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>74</ID>
+      <Description>"Pokemon 2 SID TID"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+66B8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>80</ID>
+      <Description>"Pokemon 2 PID"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+66A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>87</ID>
+      <Description>"Pokemon 2 Shadow Flag Part 1"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+677C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>88</ID>
+      <Description>"Pokemon 2 Shadow Flag Part 2"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6780</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>113</ID>
+      <Description>"Pokemon 2 Hyper Mode Flag"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+678D</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>94</ID>
+      <Description>"Pokemon 2 Ability"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+7A85</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>95</ID>
+      <Description>"Pokemon 2 Type 1"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+7A81</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>96</ID>
+      <Description>"Pokemon 2 Type 2"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+7A83</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>98</ID>
+      <Description>"Pokemon 2 Level"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+6704</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"Pokemon 2 Move 1"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+671C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104</ID>
+      <Description>"Pokemon 2 Move 2"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6720</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>102</ID>
+      <Description>"Pokemon 2 Move 3"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6724</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>106</ID>
+      <Description>"Pokemon 2 Move 4"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6728</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>108</ID>
+      <Description>"Pokemon 2 EXP"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+6700</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>124</ID>
+      <Description>"Pokemon 2 Obedience Bit"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>_EnemyData+679C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>83</ID>
+      <Description>"Trainer TID SID Finder"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobScanRegion(TID, 803F8000, 80400000, 0B 03 02 02)
+label(_TID)
+registersymbol(_TID)
+
+TID:
+_TID:
+
+[DISABLE]
+unregistersymbol(_TID)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>84</ID>
+          <Description>"Trainer SID TID"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Byte Big Endian</CustomType>
+          <Address>_TID+9C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>120</ID>
+      <Description>"Hyper Mode 1"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+71E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>121</ID>
+      <Description>"Attack Used 1"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+71E2</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>119</ID>
+      <Description>"Hyper Mode 2"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+73AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>118</ID>
+      <Description>"Attack Used 2"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+73AE</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115</ID>
+      <Description>"Hyper Mode 3"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+78C0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>114</ID>
+      <Description>"Attack Used 3"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+78C2</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>116</ID>
+      <Description>"Hyper Mode 4"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>_EnemyData+7A8C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>117</ID>
+      <Description>"Attack Used 4"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>_EnemyData+7A8E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>125</ID>
+      <Description>"Resolve Addresses"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscan(EnemyData, E0 00 28 00 E0 00 00 00 E0 00 28 00 E0 00 32 00 81 30 9D E0 81 30 9E 60 81 30 9E E0 81 30 9F 60 81 30 9F E0 81 30 A0 60)
+label(_EnemyData)
+registersymbol(_EnemyData)
+
+EnemyData:
+_EnemyData:
+
+[DISABLE]
+unregistersymbol(_EnemyData)
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>
+</LuaScript>
+</CheatTable>
