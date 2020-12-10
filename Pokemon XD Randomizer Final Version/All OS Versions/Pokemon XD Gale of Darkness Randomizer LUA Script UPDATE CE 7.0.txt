@@ -1,0 +1,2531 @@
+CreditsText=[[
+First and foremost, I'd like to thank both God and his son Jesus Christ for giving me the knowledge and patience to make this trainer.
+Reclaimer Shawn = Programming, Form Designing, Address Finding
+Dark Byte = Bypassing Memory Protection
+Zanzer = RNG & Programming
+StarsMmd = For Disabling the Colosseum Shiny Pokemon Glitch & Address Finding
+Nintendo = For Creating the Pokemon Franchise
+Dolphin = For Creating the Emulator this game was played on
+]]
+
+AboutText=[[
+All this program does is use the OS Time and puts that through a formula to make a seed, then based on that generates values within the range of applicable things in the game.
+In order to use this program, open up Pokemon XD: Gale of Darkness in Dolphin emulator and wait until you see "Press Any Button To Continue"
+Click start, then press hook game one time (or it might not work properly). After that, click on "Address Scan."
+To sync the health, press the one button on the keyboard to sync the health of the top slot Pokemon.
+Press 2 to sync the bottom Pokemon's health. If you use this several times during a battle, you will completely restore their health.
+Also, press 1 and 2 when a battle is supposed to end and you can continue it! The Difficulty Scaler has several modes. Pitiful mode spawns Level 1 Pokemon that are a 1 hit knock-out. Normal Mode spawns Pokemon within a Level 50 stat range. Intermediate Mode generates Pokemon within a Level 75 stat range. Hard Mode generates Pokemon at a Level 100 range.
+Impossible mode makes Pokemon have an HP stat of 32767 and all other stats are 65535 (Making them impossible to kill save for one or two methods...)
+Finally, Regular Mode sets levels and stats of Pokemon to what they'd normally be, but the program still randomizes their attacks and species.
+You do not have to use the 1 and 2 keys to sync health in this mode as the game seems to calculate out the health for you.
+Do not use the difficulty scaler in the middle of a battle; scale it after the battle ends if you don't like the mode you're on at the time. If you choose to not check randomize shadow Pokemon, shadow Pokemon species and stats will still be modified, but shadow Pokemon will always appear in their typical places.
+Finally, do not click on any of the buttons before the game is hooked. If you do, you'll have to close and reopen both the program and a new process of Dolphin.
+]]
+
+AddressScanFinish=[[
+The program has found all necessary things it needs to function. If the game is closed at any time, close and reopen this program and Dolphin. If you clicked this before hooking the game at the proper time, close and reopen this program and Dolphin.
+]]
+
+countdown1 = 0
+countdown2 = 0
+intspeciesByte1 = 0
+intspeciesByte2 = 0
+inttype1 = 0
+inttype2 = 0
+inttype21 = 0
+inttype22 = 0
+intspecies2Byte1 = 0
+intspecies2Byte2 = 0
+intatk1Byte1 = 0
+intatk1Byte2 = 0
+intatk2Byte1 = 0
+intatk2Byte2 = 0
+intatk3Byte1 = 0
+intatk3Byte2 = 0
+intatk4Byte1 = 0
+intatk4Byte2 = 0
+p2intatk1Byte1 = 0
+p2intatk1Byte2 = 0
+p2intatk2Byte1 = 0
+p2intatk2Byte2 = 0
+p2intatk3Byte1 = 0
+p2intatk3Byte2 = 0
+p2intatk4Byte1 = 0
+p2intatk4Byte2 = 0
+intshadow1 = 0
+intshadow2 = 0
+intability1 = 0
+intability2 = 0
+p1hp1 = 0
+p1hp2 = 0
+p1atk1 = 0
+p1atk2 = 0
+p1def1 = 0
+p1def2 = 0
+p1satk1 = 0
+p1satk2 = 0
+p1sdef1 = 0
+p1sdef2 = 0
+p1spd1 = 0
+p1spd2 = 0
+p2hp1 = 0
+p2hp2 = 0
+p2atk1 = 0
+p2atk2 = 0
+p2def1 = 0
+p2def2 = 0
+p2satk1 = 0
+p2satk2 = 0
+p2sdef1 = 0
+p2sdef2 = 0
+p2spd1 = 0
+p2spd2 = 0
+Lv = 0
+
+function CloseClick()
+  closeCE()
+  return caFree
+end
+
+getLuaEngine().cbShowOnPrint.Checked=false 
+getLuaEngine().hide()
+
+UDF1.OnClose = CloseClick
+
+function CEButton1Click(sender)
+  showMessage(AboutText)
+end
+
+function CEButton2Click(sender)
+  showMessage(CreditsText)
+end
+
+function CEButton3Click(sender)
+  OpenProcess("Dolphin.exe")
+end
+
+function CEButton4Click(sender)
+   CheatEntry = getAddressList().getMemoryRecord(0)
+   memoryrecord_freeze(CheatEntry)
+   showMessage(AddressScanFinish)
+end
+
+function shiny()
+   if ((checkbox_getState(UDF1.CECheckbox2)) == 1) then
+
+   writeBytes("_EnemyData-35D534",56,96,0,0)
+   writeBytes("_EnemyData+79A0",255,255,255,253)
+   writeBytes("_EnemyData+799C",0,0,0,0)
+   writeBytes("_EnemyData+7CA0",255,255,255,253)
+   writeBytes("_EnemyData+7C9C",0,0,0,0)
+end
+end
+
+function xd()
+   if ((checkbox_getState(UDF1.CECheckbox1)) == 1) then
+         writeBytes("_EnemyData+7A33",73)
+         writeBytes("_EnemyData+7978",0,249)
+         writeBytes("_EnemyData+797C",127,255)
+         writeBytes("_EnemyData+7A08",127,255)
+         writeBytes("_EnemyData+7A0A",255,255)
+         writeBytes("_EnemyData+7A0C",255,255)
+         writeBytes("_EnemyData+7A0E",255,255)
+         writeBytes("_EnemyData+7A10",255,255)
+         writeBytes("_EnemyData+7A12",255,255)
+end
+end
+
+function typemod()
+  inta = readInteger("_EnemyData+797C") & 0xffff
+  intb = readInteger("_EnemyData+7C7C") & 0xffff
+
+  if inta == 0 then
+    _G.inttype1 = math.random(0, 17)
+    _G.inttype2 = math.random(0, 17)
+  end
+  if intb == 0 then
+    _G.inttype21 = math.random(0, 17)
+    _G.inttype22 = math.random(0, 17)
+  end  
+
+  writeBytes("_EnemyData+937D",_G.inttype1)
+  writeBytes("_EnemyData+937F",_G.inttype2)
+  writeBytes("_EnemyData+9C11",_G.inttype21)
+  writeBytes("_EnemyData+9C13",_G.inttype22)
+  end
+
+function random()
+  inta = readInteger("_EnemyData+797C") & 0xffff
+  intb = readInteger("_EnemyData+7C7C") & 0xffff
+  myvar = 0
+  name = 0
+  index = UDF1.CEComboBox2.ItemIndex
+  if index == -1 then return end;
+
+  name = math.random(0, 3)
+  if name == 0 then
+  writeBytes("_EnemyData+6FFC",00,83,00,104,00,97,00,119,00,110,00,32,00,32)
+  elseif name == 1 then
+  writeBytes("_EnemyData+6FFC",00,83,00,116,00,97,00,114,00,115,00,77,00,68)
+  elseif name == 2 then
+  writeBytes("_EnemyData+6FFC",00,68,00,114,00,107,00,66,00,121,00,116,00,101)
+  elseif name == 3 then
+  writeBytes("_EnemyData+6FFC",00,90,00,97,00,110,00,122,00,101,00,114,00,32)
+  end
+  if inta == 0 then
+  _G.intspeciesByte1 = math.random(0,1)
+  _G.intatk1Byte1 = math.random(0,1)
+  _G.intatk2Byte1 = math.random(0,1)
+  _G.intatk3Byte1 = math.random(0,1)
+  _G.intatk4Byte1 = math.random(0,1)
+  if _G.intspeciesByte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intspeciesByte2 = math.random(1, 251)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intspeciesByte2 = math.random(21, 155)
+   writeBytes("_EnemyData+7978",_G.intspeciesByte1,_G.intspeciesByte2)
+  end
+  if _G.intatk1Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk1Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk1Byte2 = math.random(0, 117)
+  end
+   if _G.intatk2Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk2Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk2Byte2 = math.random(0, 117)
+  end
+  if _G.intatk3Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk3Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk3Byte2 = math.random(0, 117)
+  end
+  if _G.intatk4Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk4Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intatk4Byte2 = math.random(0, 117)
+  end
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intability1 = math.random(1, 77)
+  end
+
+  if intb == 0 then
+  _G.intspecies2Byte1 = math.random(0,1)
+  _G.p2intatk1Byte1 = math.random(0,1)
+  _G.p2intatk2Byte1 = math.random(0,1)
+  _G.p2intatk3Byte1 = math.random(0,1)
+  _G.p2intatk4Byte1 = math.random(0,1)
+  if _G.intspecies2Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intspecies2Byte2 = math.random(1, 251)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intspecies2Byte2 = math.random(21, 155)
+   writeBytes("_EnemyData+7C78",_G.intspecies2Byte1,_G.intspecies2Byte2)
+  end
+  if _G.p2intatk1Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk1Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk1Byte2 = math.random(0, 117)
+  end
+   if _G.p2intatk2Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk2Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk2Byte2 = math.random(0, 117)
+  end
+  if _G.p2intatk3Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk3Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk3Byte2 = math.random(0, 117)
+  end
+  if _G.p2intatk4Byte1 == 0 then
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk4Byte2 = math.random(1, 255)
+  else
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.p2intatk4Byte2 = math.random(0, 117)
+  end
+    myvar = myvar and myvar < 1000 and myvar or 0
+    math.randomseed( os.clock() * 1000 + myvar )
+    myvar = myvar + 1
+    _G.intability2 = math.random(1, 77)
+  end
+ if index == 0 then
+    _G.p1hp1 = 0
+    _G.p1hp2 = 1
+    _G.p2hp1 = 0
+    _G.p2hp2 = 1
+    _G.p1atk1 = 0
+    _G.p1def1 = 0
+    _G.p1satk1 = 0
+    _G.p1sdef1 = 0
+    _G.p1spd1 = 0
+    _G.p1atk2 = 0
+    _G.p1def2 = 0
+    _G.p1satk2 = 0
+    _G.p1sdef2 = 0
+    _G.p1spd2 = 0
+    _G.p2atk1 = 0
+    _G.p2def1 = 0
+    _G.p2satk1 = 0
+    _G.p2sdef1 = 0
+    _G.p2spd1 = 0
+    _G.p2atk2 = 0
+    _G.p2def2 = 0
+    _G.p2satk2 = 0
+    _G.p2sdef2 = 0
+    _G.p2spd2 = 0
+    _G.Lv = 1
+doall1()
+  elseif index == 1 then
+  if inta == 0 then
+    _G.p1hp1 = 0
+    _G.p1atk1 = 0
+    _G.p1def1 = 0
+    _G.p1satk1 = 0
+    _G.p1sdef1 = 0
+    _G.p1spd1 = 0
+    _G.Lv = 50
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+     _G.p1hp2 = math.random(151, 243)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1atk2 = math.random(103, 180)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1def2 = math.random(98, 185)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1satk2 = math.random(98, 185)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1sdef2 = math.random(97, 180)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1spd2 = math.random(97, 180)
+   end
+  if intb == 0 then
+    _G.p2hp1 = 0
+    _G.p2atk1 = 0
+    _G.p2def1 = 0
+    _G.p2satk1 = 0
+    _G.p2sdef1 = 0
+    _G.p2spd1 = 0
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+     _G.p2hp2 = math.random(151, 243)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2atk2 = math.random(103, 180)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2def2 = math.random(98, 185)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2satk2 = math.random(98, 185)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2sdef2 = math.random(97, 180)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2spd2 = math.random(97, 180)
+  end
+doall1()
+  elseif index == 2 then
+  if inta == 0 then
+    _G.p1hp1 = 1
+    _G.p1atk1 = 0
+    _G.p1def1 = 0
+    _G.p1satk1 = 0
+    _G.p1sdef1 = 0
+    _G.p1spd1 = 0
+    _G.Lv = 75
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1hp2 = math.random(0, 29)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1atk2 = math.random(157, 242)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1def2 = math.random(148, 230)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1satk2 = math.random(148, 230)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1sdef2 = math.random(148, 230)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1spd2 = math.random(141, 216)
+   end
+  if intb == 0 then
+    _G.p2hp1 = 1
+    _G.p2atk1 = 0
+    _G.p2def1 = 0
+    _G.p2satk1 = 0
+    _G.p2sdef1 = 0
+    _G.p2spd1 = 0
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2hp2 = math.random(0, 29)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2atk2 = math.random(157, 242)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2def2 = math.random(148, 230)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2satk2 = math.random(148, 230)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2sdef2 = math.random(148, 230)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2spd2 = math.random(141, 216)
+  end
+doall1()
+  elseif index == 3 then
+  if inta == 0 then
+    _G.p1hp1 = 1
+    _G.p1atk1 = 1
+    _G.p1def1 = 1
+    _G.p1satk1 = 1
+    _G.p1sdef1 = 1
+    _G.p1spd1 = 1
+    _G.Lv = 100
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1hp2 = math.random(64, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1atk2 = math.random(0, 149)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1def2 = math.random(0, 151)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1satk2 = math.random(0, 151)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1sdef2 = math.random(0, 160)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1spd2 = math.random(0, 160)
+   end
+  if intb == 0 then
+    _G.p2hp1 = 1
+    _G.p2atk1 = 1
+    _G.p2def1 = 1
+    _G.p2satk1 = 1
+    _G.p2sdef1 = 1
+    _G.p2spd1 = 1
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2hp2 = math.random(64, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2atk2 = math.random(0, 149)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2def2 = math.random(0, 151)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2satk2 = math.random(0, 151)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2sdef2 = math.random(0, 160)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2spd2 = math.random(0, 160)
+  end
+doall1()
+  elseif index == 4 then
+    _G.Lv = math.random(1, 255)
+  if inta == 0 then
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p1hp1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1hp2 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p1atk1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p1def1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p1satk1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p1sdef1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p1spd1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1atk2 = math.random(234, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1def2 = math.random(230, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1satk2 = math.random(228, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1sdef2 = math.random(228, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p1spd2 = math.random(217, 255)
+   end
+  if intb == 0 then
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p2hp1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2hp2 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p2atk1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p2def1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p2satk1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p2sdef1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+    _G.p2spd1 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2atk2 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2def2 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2satk2 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2sdef2 = math.random(0, 255)
+   myvar = myvar and myvar < 1000 and myvar or 0
+   math.randomseed( os.clock() * 1000 + myvar )
+   myvar = myvar + 1
+     _G.p2spd2 = math.random(0, 255)
+  end
+doall1()
+  elseif index == 5 then
+    _G.Lv = 255
+    _G.p1hp1 = 127
+    _G.p1hp2 = 255
+    _G.p2hp1 = 127
+    _G.p2hp2 = 255
+    _G.p1atk1 = 255
+    _G.p1def1 = 255
+    _G.p1satk1 = 255
+    _G.p1sdef1 = 255
+    _G.p1spd1 = 255
+    _G.p1atk2 = 255
+    _G.p1def2 = 255
+    _G.p1satk2 = 255
+    _G.p1sdef2 = 255
+    _G.p1spd2 = 255
+    _G.p2atk1 = 255
+    _G.p2def1 = 255
+    _G.p2satk1 = 255
+    _G.p2sdef1 = 255
+    _G.p2spd1 = 255
+    _G.p2atk2 = 255
+    _G.p2def2 = 255
+    _G.p2satk2 = 255
+    _G.p2sdef2 = 255
+    _G.p2spd2 = 255
+doall1()
+  elseif index == 6 then
+doall2()
+end
+end
+
+function pure()
+   if ((checkbox_getState(UDF1.CECheckbox4)) == 1) then
+  _G.intshadow1 = 0
+  _G.intshadow2 = 0
+end
+end
+
+function shadow()
+  inta = readInteger("_EnemyData+797C") & 0xffff
+  intb = readInteger("_EnemyData+7C7C") & 0xffff
+  if inta == 0 then
+  _G.intshadow1 = math.random(0, 83)
+  while(_G.intshadow1 == 73)
+  do
+  _G.intshadow1 = math.random(0, 83)
+  end
+  end
+
+  if intb == 0 then
+  _G.intshadow2 = math.random(0, 83)
+  while(_G.intshadow2 == 73)
+  do
+  _G.intshadow2 = math.random(0, 83)
+  end
+  end
+end
+
+function fixme()
+local speciesByte1 = 0
+local speciesByte2 = 0
+local species2Byte1 = 0
+local species2Byte2 = 0
+local nameAddr1 = 0
+local nameAddr2 = 0
+local nameAddr3 = 0
+local nameAddr4 = 0
+local speciesTotal = speciesByte1 + (speciesByte2*256)
+local species2Total = species2Byte1 + (species2Byte2*256)
+local name = 'Shawn'
+local name2 = 'Shawn'
+local slen1 = string.len(name)
+local slen2 = string.len(name2)
+local slen11 = string.format("0x%X", slen1)
+local slen22 = string.format("0x%X", slen2)
+local switch1 = readInteger("_EnemyData+9320") & 0xffffffff
+local switch2 = readInteger("_EnemyData+9BB4") & 0xffffffff
+local switch3 = readInteger("_EnemyData+9C9C") & 0xffffffff
+local index2 = UDF1.CEComboBox2.ItemIndex
+
+  speciesByte1 = readInteger("_EnemyData+7979") & 0xff
+  speciesByte2 = readInteger("_EnemyData+7978") & 0xff
+  speciesTotal = speciesByte1 + (speciesByte2*256)
+  species2Byte1 = readInteger("_EnemyData+7C79") & 0xff
+  species2Byte2 = readInteger("_EnemyData+7C78") & 0xff
+  species2Total = species2Byte1 + (species2Byte2*256)
+  nameAddr1 = string.format("0x%X", getAddress('_EnemyData+79C7'))
+  nameAddr2 = string.format("0x%X", getAddress('_EnemyData+79DD'))
+  nameAddr3 = string.format("0x%X", getAddress('_EnemyData+7CC7'))
+  nameAddr4 = string.format("0x%X", getAddress('_EnemyData+7CDD'))
+
+if speciesTotal == 1 then
+  name = 'BULBASAUR'
+elseif speciesTotal == 2 then
+  name = 'IVYSAUR'
+elseif speciesTotal == 3 then
+  name = 'VENASAUR'
+elseif speciesTotal == 4 then
+  name = 'CHARMANDER'
+elseif speciesTotal == 5 then
+  name = 'CHARMELEON'
+elseif speciesTotal == 6 then
+  name = 'CHARIZARD'
+elseif speciesTotal == 7 then
+  name = 'SQUIRTLE'
+elseif speciesTotal == 8 then
+  name = 'WARTORTLE'
+elseif speciesTotal == 9 then
+  name = 'BLASTOISE'
+elseif speciesTotal == 10 then
+  name = 'CATERPIE'
+elseif speciesTotal == 11 then
+  name = 'METAPOD'
+elseif speciesTotal == 12 then
+  name = 'BUTERFREE'
+elseif speciesTotal == 13 then
+  name = 'WEEDLE'
+elseif speciesTotal == 14 then
+  name = 'KAKUNA'
+elseif speciesTotal == 15 then
+  name = 'BEEDRILL'
+elseif speciesTotal == 16 then
+  name = 'PIDGEY'
+elseif speciesTotal == 17 then
+  name = 'PIDGEOTTO'
+elseif speciesTotal == 18 then
+  name = 'PIDGEOT'
+elseif speciesTotal == 19 then
+  name = 'RATTATA'
+elseif speciesTotal == 20 then
+  name = 'RATICATE'
+elseif speciesTotal == 21 then
+  name = 'SPEAROW'
+elseif speciesTotal == 22 then
+  name = 'FEAROW'
+elseif speciesTotal == 23 then
+  name = 'EKANS'
+elseif speciesTotal == 24 then
+  name = 'ARBOK'
+elseif speciesTotal == 25 then
+  name = 'PIKACHU'
+elseif speciesTotal == 26 then
+  name = 'RAICHU'
+elseif speciesTotal == 27 then
+  name = 'SANDSHREW'
+elseif speciesTotal == 28 then
+  name = 'SANDSLASH'
+elseif speciesTotal == 29 then
+  name = 'NIDORAN'
+elseif speciesTotal == 30 then
+  name = 'NIDORINA'
+elseif speciesTotal == 31 then
+  name = 'NIDOQUEEN'
+elseif speciesTotal == 32 then
+  name = 'NIDORAN'
+elseif speciesTotal == 33 then
+  name = 'NIDORINO'
+elseif speciesTotal == 34 then
+  name = 'NIDOKING'
+elseif speciesTotal == 35 then
+  name = 'CLEFAIRY'
+elseif speciesTotal == 36 then
+  name = 'CLEFABLE'
+elseif speciesTotal == 37 then
+  name = 'VULPIX'
+elseif speciesTotal == 38 then
+  name = 'NINETALES'
+elseif speciesTotal == 39 then
+  name = 'JIGGLYPUFF'
+elseif speciesTotal == 40 then
+  name = 'WIGGLYTUFF'
+elseif speciesTotal == 41 then
+  name = 'ZUBAT'
+elseif speciesTotal == 42 then
+  name = 'GOLBAT'
+elseif speciesTotal == 43 then
+  name = 'ODDISH'
+elseif speciesTotal == 44 then
+  name = 'GLOOM'
+elseif speciesTotal == 45 then
+  name = 'VILEPLUME'
+elseif speciesTotal == 46 then
+  name = 'PARAS'
+elseif speciesTotal == 47 then
+  name = 'PARASECT'
+elseif speciesTotal == 48 then
+  name = 'VENONAT'
+elseif speciesTotal == 49 then
+  name = 'VENOMOTH'
+elseif speciesTotal == 50 then
+  name = 'DIGLETT'
+elseif speciesTotal == 51 then
+  name = 'DUGTRIO'
+elseif speciesTotal == 52 then
+  name = 'MEOWTH'
+elseif speciesTotal == 53 then
+  name = 'PERSIAN'
+elseif speciesTotal == 54 then
+  name = 'PSYDUCK'
+elseif speciesTotal == 55 then
+  name = 'GOLDUCK'
+elseif speciesTotal == 56 then
+  name = 'MANKEY'
+elseif speciesTotal == 57 then
+  name = 'PRIMEAPE'
+elseif speciesTotal == 58 then
+  name = 'GROWLITHE'
+elseif speciesTotal == 59 then
+  name = 'ARCANINE'
+elseif speciesTotal == 60 then
+  name = 'POLIWAG'
+elseif speciesTotal == 61 then
+  name = 'POLIWHIRL'
+elseif speciesTotal == 62 then
+  name = 'POLIWRATH'
+elseif speciesTotal == 63 then
+  name = 'ABRA'
+elseif speciesTotal == 64 then
+  name = 'KADABRA'
+elseif speciesTotal == 65 then
+  name = 'ALAKAZAM'
+elseif speciesTotal == 66 then
+  name = 'MACHOP'
+elseif speciesTotal == 67 then
+  name = 'MACHOKE'
+elseif speciesTotal == 68 then
+  name = 'MACHAMP'
+elseif speciesTotal == 69 then
+  name = 'BELLSPROUT'
+elseif speciesTotal == 70 then
+  name = 'WEEPINBELL'
+elseif speciesTotal == 71 then
+  name = 'VICTREEBEL'
+elseif speciesTotal == 72 then
+  name = 'TENTACOOL'
+elseif speciesTotal == 73 then
+  name = 'TENTACRUEL'
+elseif speciesTotal == 74 then
+  name = 'GEODUDE'
+elseif speciesTotal == 75 then
+  name = 'GRAVELER'
+elseif speciesTotal == 76 then
+  name = 'GOLEM'
+elseif speciesTotal == 77 then
+  name = 'PONYTA'
+elseif speciesTotal == 78 then
+  name = 'RAPIDASH'
+elseif speciesTotal == 79 then
+  name = 'SLOWPOKE'
+elseif speciesTotal == 80 then
+  name = 'SLOWBRO'
+elseif speciesTotal == 81 then
+  name = 'MAGNEMITE'
+elseif speciesTotal == 82 then
+  name = 'MAGNETON'
+elseif speciesTotal == 83 then
+  name = 'FARFETCHD'
+elseif speciesTotal == 84 then
+  name = 'DODUO'
+elseif speciesTotal == 85 then
+  name = 'DODRIO'
+elseif speciesTotal == 86 then
+  name = 'SEEL'
+elseif speciesTotal == 87 then
+  name = 'DEWGONG'
+elseif speciesTotal == 88 then
+  name = 'GRIMER'
+elseif speciesTotal == 89 then
+  name = 'MUK'
+elseif speciesTotal == 90 then
+  name = 'SHELLDER'
+elseif speciesTotal == 91 then
+  name = 'CLOYSTER'
+elseif speciesTotal == 92 then
+  name = 'GASTLY'
+elseif speciesTotal == 93 then
+  name = 'HAUNTER'
+elseif speciesTotal == 94 then
+  name = 'GENGAR'
+elseif speciesTotal == 95 then
+  name = 'ONIX'
+elseif speciesTotal == 96 then
+  name = 'DROWZEE'
+elseif speciesTotal == 97 then
+  name = 'HYPNO'
+elseif speciesTotal == 98 then
+  name = 'KRABBY'
+elseif speciesTotal == 99 then
+  name = 'KINGLER'
+elseif speciesTotal == 100 then
+  name = 'VOLTORB'
+elseif speciesTotal == 101 then
+  name = 'ELECTRODE'
+elseif speciesTotal == 102 then
+  name = 'EXEGGCUTE'
+elseif speciesTotal == 103 then
+  name = 'EXEGGUTOR'
+elseif speciesTotal == 104 then
+  name = 'CUBONE'
+elseif speciesTotal == 105 then
+  name = 'MAROWAK'
+elseif speciesTotal == 106 then
+  name = 'HITMONLEE'
+elseif speciesTotal == 107 then
+  name = 'HITMONCHAN'
+elseif speciesTotal == 108 then
+  name = 'LICKITUNG'
+elseif speciesTotal == 109 then
+  name = 'KOFFING'
+elseif speciesTotal == 110 then
+  name = 'WEEZING'
+elseif speciesTotal == 111 then
+  name = 'RHYHORN'
+elseif speciesTotal == 112 then
+  name = 'RHYDON'
+elseif speciesTotal == 113 then
+  name = 'CHANSEY'
+elseif speciesTotal == 114 then
+  name = 'TANGELA'
+elseif speciesTotal == 115 then
+  name = 'KANGASKHAN'
+elseif speciesTotal == 116 then
+  name = 'HORSEA'
+elseif speciesTotal == 117 then
+  name = 'SEADRA'
+elseif speciesTotal == 118 then
+  name = 'GOLDEEN'
+elseif speciesTotal == 119 then
+  name = 'SEAKING'
+elseif speciesTotal == 120 then
+  name = 'STARYU'
+elseif speciesTotal == 121 then
+  name = 'STARMIE'
+elseif speciesTotal == 122 then
+  name = 'MR.MIME'
+elseif speciesTotal == 123 then
+  name = 'SCYTHER'
+elseif speciesTotal == 124 then
+  name = 'JYNX'
+elseif speciesTotal == 125 then
+  name = 'ELECTABUZZ'
+elseif speciesTotal == 126 then
+  name = 'MAGMAR'
+elseif speciesTotal == 127 then
+  name = 'PINSIR'
+elseif speciesTotal == 128 then
+  name = 'TAUROS'
+elseif speciesTotal == 129 then
+  name = 'MAGIKARP'
+elseif speciesTotal == 130 then
+  name = 'GYARADOS'
+elseif speciesTotal == 131 then
+  name = 'LAPRAS'
+elseif speciesTotal == 132 then
+  name = 'DITTO'
+elseif speciesTotal == 133 then
+  name = 'EEVEE'
+elseif speciesTotal == 134 then
+  name = 'VAPOREON'
+elseif speciesTotal == 135 then
+  name = 'JOLTEON'
+elseif speciesTotal == 136 then
+  name = 'FLAREON'
+elseif speciesTotal == 137 then
+  name = 'PORYGON'
+elseif speciesTotal == 138 then
+  name = 'OMANYTE'
+elseif speciesTotal == 139 then
+  name = 'OMASTAR'
+elseif speciesTotal == 140 then
+  name = 'KABUTO'
+elseif speciesTotal == 141 then
+  name = 'KABUTOPS'
+elseif speciesTotal == 142 then
+  name = 'AERODACTYL'
+elseif speciesTotal == 143 then
+  name = 'SNORLAX'
+elseif speciesTotal == 144 then
+  name = 'ARTICUNO'
+elseif speciesTotal == 145 then
+  name = 'ZAPDOS'
+elseif speciesTotal == 146 then
+  name = 'MOLTRES'
+elseif speciesTotal == 147 then
+  name = 'DRATINI'
+elseif speciesTotal == 148 then
+  name = 'DRAGONAIR'
+elseif speciesTotal == 149 then
+  name = 'DRAGONITE'
+elseif speciesTotal == 150 then
+  name = 'MEWTWO'
+elseif speciesTotal == 151 then
+  name = 'MEW'
+elseif speciesTotal == 152 then
+  name = 'CHIKORITA'
+elseif speciesTotal == 153 then
+  name = 'BAYLEEF'
+elseif speciesTotal == 154 then
+  name = 'MEGANIUM'
+elseif speciesTotal == 155 then
+  name = 'CYNDAQUIL'
+elseif speciesTotal == 156 then
+  name = 'QUILAVA'
+elseif speciesTotal == 157 then
+  name = 'TYPHLOSION'
+elseif speciesTotal == 158 then
+  name = 'TOTODILE'
+elseif speciesTotal == 159 then
+  name = 'CROCONAW'
+elseif speciesTotal == 160 then
+  name = 'FERALIGATR'
+elseif speciesTotal == 161 then
+  name = 'SENTRET'
+elseif speciesTotal == 162 then
+  name = 'FURRET'
+elseif speciesTotal == 163 then
+  name = 'HOOTHOOT'
+elseif speciesTotal == 164 then
+  name = 'NOCTOWL'
+elseif speciesTotal == 165 then
+  name = 'LEDYBA'
+elseif speciesTotal == 166 then
+  name = 'LEDIAN'
+elseif speciesTotal == 167 then
+  name = 'SPINARAK'
+elseif speciesTotal == 168 then
+  name = 'ARIADOS'
+elseif speciesTotal == 169 then
+  name = 'CROBAT'
+elseif speciesTotal == 170 then
+  name = 'CHINCHOU'
+elseif speciesTotal == 171 then
+  name = 'LANTURN'
+elseif speciesTotal == 172 then
+  name = 'PICHU'
+elseif speciesTotal == 173 then
+  name = 'CLEFFA'
+elseif speciesTotal == 174 then
+  name = 'IGGLYBUFF'
+elseif speciesTotal == 175 then
+  name = 'TOGEPI'
+elseif speciesTotal == 176 then
+  name = 'TOGETIC'
+elseif speciesTotal == 177 then
+  name = 'NATU'
+elseif speciesTotal == 178 then
+  name = 'XATU'
+elseif speciesTotal == 179 then
+  name = 'MAREEP'
+elseif speciesTotal == 180 then
+  name = 'FLAAFFY'
+elseif speciesTotal == 181 then
+  name = 'AMPHAROS'
+elseif speciesTotal == 182 then
+  name = 'BELLOSSOM'
+elseif speciesTotal == 183 then
+  name = 'MARILL'
+elseif speciesTotal == 184 then
+  name = 'AZUMARILL'
+elseif speciesTotal == 185 then
+  name = 'SUDOWOODO'
+elseif speciesTotal == 186 then
+  name = 'POLITOED'
+elseif speciesTotal == 187 then
+  name = 'HOPPIP'
+elseif speciesTotal == 188 then
+  name = 'SKIPLOOM'
+elseif speciesTotal == 189 then
+  name = 'JUMPLUFF'
+elseif speciesTotal == 190 then
+  name = 'AIPOM'
+elseif speciesTotal == 191 then
+  name = 'SUNKERN'
+elseif speciesTotal == 192 then
+  name = 'SUNFLORA'
+elseif speciesTotal == 193 then
+  name = 'YANMA'
+elseif speciesTotal == 194 then
+  name = 'WOOPER'
+elseif speciesTotal == 195 then
+  name = 'QUAGSIRE'
+elseif speciesTotal == 196 then
+  name = 'ESPEON'
+elseif speciesTotal == 197 then
+  name = 'UMBREON'
+elseif speciesTotal == 198 then
+  name = 'MURKROW'
+elseif speciesTotal == 199 then
+  name = 'SLOWKING'
+elseif speciesTotal == 200 then
+  name = 'MISDREAVUS'
+elseif speciesTotal == 201 then
+  name = 'UNOWN'
+elseif speciesTotal == 202 then
+  name = 'WOBBUFFETT'
+elseif speciesTotal == 203 then
+  name = 'GIRAFARIG'
+elseif speciesTotal == 204 then
+  name = 'PINECO'
+elseif speciesTotal == 205 then
+  name = 'FORETRESS'
+elseif speciesTotal == 206 then
+  name = 'DUNSPARCE'
+elseif speciesTotal == 207 then
+  name = 'GLIGAR'
+elseif speciesTotal == 208 then
+  name = 'STEELIX'
+elseif speciesTotal == 209 then
+  name = 'SNUBBULL'
+elseif speciesTotal == 210 then
+  name = 'GRANBULL'
+elseif speciesTotal == 211 then
+  name = 'QUILFISH'
+elseif speciesTotal == 212 then
+  name = 'SCIZOR'
+elseif speciesTotal == 213 then
+  name = 'SHUCKLE'
+elseif speciesTotal == 214 then
+  name = 'HERACROSS'
+elseif speciesTotal == 215 then
+  name = 'SNEAZLE'
+elseif speciesTotal == 216 then
+  name = 'TEDDIURSA'
+elseif speciesTotal == 217 then
+  name = 'URSARING'
+elseif speciesTotal == 218 then
+  name = 'SLUGMA'
+elseif speciesTotal == 219 then
+  name = 'MAGCARGO'
+elseif speciesTotal == 220 then
+  name = 'SWINUB'
+elseif speciesTotal == 221 then
+  name = 'PILOSWINE'
+elseif speciesTotal == 222 then
+  name = 'CORSOLA'
+elseif speciesTotal == 223 then
+  name = 'REMORAID'
+elseif speciesTotal == 224 then
+  name = 'OCTILLERY'
+elseif speciesTotal == 225 then
+  name = 'DELIBIRD'
+elseif speciesTotal == 226 then
+  name = 'MANTINE'
+elseif speciesTotal == 227 then
+  name = 'SKARMORY'
+elseif speciesTotal == 228 then
+  name = 'HOUNDOUR'
+elseif speciesTotal == 229 then
+  name = 'HOUNDOOM'
+elseif speciesTotal == 230 then
+  name = 'KINGDRA'
+elseif speciesTotal == 231 then
+  name = 'PHANPY'
+elseif speciesTotal == 232 then
+  name = 'DONAPHAN'
+elseif speciesTotal == 233 then
+  name = 'PORYGON2'
+elseif speciesTotal == 234 then
+  name = 'STANTLER'
+elseif speciesTotal == 235 then
+  name = 'SMEARGLE'
+elseif speciesTotal == 236 then
+  name = 'TYROGUE'
+elseif speciesTotal == 237 then
+  name = 'HITMONTOP'
+elseif speciesTotal == 238 then
+  name = 'SMOOCHUM'
+elseif speciesTotal == 239 then
+  name = 'ELEKID'
+elseif speciesTotal == 240 then
+  name = 'MAGBY'
+elseif speciesTotal == 241 then
+  name = 'MILTANK'
+elseif speciesTotal == 242 then
+  name = 'BLISSEY'
+elseif speciesTotal == 243 then
+  name = 'RAIKOU'
+elseif speciesTotal == 244 then
+  name = 'ENTEI'
+elseif speciesTotal == 245 then
+  name = 'SUICUNE'
+elseif speciesTotal == 246 then
+  name = 'LARVITAR'
+elseif speciesTotal == 247 then
+  name = 'PUPITAR'
+elseif speciesTotal == 248 then
+  name = 'TYRANITAR'
+elseif speciesTotal == 249 then
+  name = 'LUGIA'
+elseif speciesTotal == 250 then
+  name = 'HO-OH'
+elseif speciesTotal == 251 then
+  name = 'CELEBI'
+elseif speciesTotal == 277 then
+  name = 'TREECKO'
+elseif speciesTotal == 278 then
+  name = 'GROVYLE'
+elseif speciesTotal == 279 then
+  name = 'SCEPTILE'
+elseif speciesTotal == 280 then
+  name = 'TORCHIC'
+elseif speciesTotal == 281 then
+  name = 'COMBUSKEN'
+elseif speciesTotal == 282 then
+  name = 'BLAZIKEN'
+elseif speciesTotal == 283 then
+  name = 'MUDKIP'
+elseif speciesTotal == 284 then
+  name = 'MARSHTOMP'
+elseif speciesTotal == 285 then
+  name = 'SWAMPERT'
+elseif speciesTotal == 286 then
+  name = 'POOCHYENA'
+elseif speciesTotal == 287 then
+  name = 'MIGHTYENA'
+elseif speciesTotal == 288 then
+  name = 'ZIGZAGOON'
+elseif speciesTotal == 289 then
+  name = 'LINOONE'
+elseif speciesTotal == 290 then
+  name = 'WURMPLE'
+elseif speciesTotal == 291 then
+  name = 'SILCOON'
+elseif speciesTotal == 292 then
+  name = 'BEAUTIFLY'
+elseif speciesTotal == 293 then
+  name = 'CASCOON'
+elseif speciesTotal == 294 then
+  name = 'DUSTOX'
+elseif speciesTotal == 295 then
+  name = 'LOTAD'
+elseif speciesTotal == 296 then
+  name = 'LOMBRE'
+elseif speciesTotal == 297 then
+  name = 'LUDICOLO'
+elseif speciesTotal == 298 then
+  name = 'SEEDOT'
+elseif speciesTotal == 299 then
+  name = 'NUZLEAF'
+elseif speciesTotal == 300 then
+  name = 'SHIFTRY'
+elseif speciesTotal == 301 then
+  name = 'NINCADA'
+elseif speciesTotal == 302 then
+  name = 'NINJASK'
+elseif speciesTotal == 303 then
+  name = 'SHEDINJA'
+elseif speciesTotal == 304 then
+  name = 'TAILOW'
+elseif speciesTotal == 305 then
+  name = 'SWELLOW'
+elseif speciesTotal == 306 then
+  name = 'SHROOMISH'
+elseif speciesTotal == 307 then
+  name = 'BRELOOM'
+elseif speciesTotal == 308 then
+  name = 'SPINDA'
+elseif speciesTotal == 309 then
+  name = 'WINGULL'
+elseif speciesTotal == 310 then
+  name = 'PELIPPER'
+elseif speciesTotal == 311 then
+  name = 'SURSKIT'
+elseif speciesTotal == 312 then
+  name = 'MASQUERAIN'
+elseif speciesTotal == 313 then
+  name = 'WAILMER'
+elseif speciesTotal == 314 then
+  name = 'WAILORD'
+elseif speciesTotal == 315 then
+  name = 'SKITTY'
+elseif speciesTotal == 316 then
+  name = 'DELCATTY'
+elseif speciesTotal == 317 then
+  name = 'KECLEON'
+elseif speciesTotal == 318 then
+  name = 'BALTOY'
+elseif speciesTotal == 319 then
+  name = 'CLAYDOL'
+elseif speciesTotal == 320 then
+  name = 'NOSEPASS'
+elseif speciesTotal == 321 then
+  name = 'TORKOAL'
+elseif speciesTotal == 322 then
+  name = 'SABLEYE'
+elseif speciesTotal == 323 then
+  name = 'BARBOACH'
+elseif speciesTotal == 324 then
+  name = 'WHISCASH'
+elseif speciesTotal == 325 then
+  name = 'LUVDISC'
+elseif speciesTotal == 326 then
+  name = 'CORPHISH'
+elseif speciesTotal == 327 then
+  name = 'CRAWDAUNT'
+elseif speciesTotal == 328 then
+  name = 'FEEBAS'
+elseif speciesTotal == 329 then
+  name = 'MILOTIC'
+elseif speciesTotal == 330 then
+  name = 'CARVANHA'
+elseif speciesTotal == 331 then
+  name = 'SHARPEDO'
+elseif speciesTotal == 332 then
+  name = 'TRAPINCH'
+elseif speciesTotal == 333 then
+  name = 'VIBRAVA'
+elseif speciesTotal == 334 then
+  name = 'FLYGON'
+elseif speciesTotal == 335 then
+  name = 'MAKUHITA'
+elseif speciesTotal == 336 then
+  name = 'HARIYAMA'
+elseif speciesTotal == 337 then
+  name = 'ELECTRIKE'
+elseif speciesTotal == 338 then
+  name = 'MANECTRIC'
+elseif speciesTotal == 339 then
+  name = 'NUMEL'
+elseif speciesTotal == 340 then
+  name = 'CAMERUPT'
+elseif speciesTotal == 341 then
+  name = 'SPHEAL'
+elseif speciesTotal == 342 then
+  name = 'SEALEO'
+elseif speciesTotal == 343 then
+  name = 'WALREIN'
+elseif speciesTotal == 344 then
+  name = 'CACNEA'
+elseif speciesTotal == 345 then
+  name = 'CACTURNE'
+elseif speciesTotal == 346 then
+  name = 'SNORUNT'
+elseif speciesTotal == 347 then
+  name = 'GLALIE'
+elseif speciesTotal == 348 then
+  name = 'LUNATONE'
+elseif speciesTotal == 349 then
+  name = 'SOLROCK'
+elseif speciesTotal == 350 then
+  name = 'AZURILL'
+elseif speciesTotal == 351 then
+  name = 'SPOINK'
+elseif speciesTotal == 352 then
+  name = 'GRUMPIG'
+elseif speciesTotal == 353 then
+  name = 'PLUSLE'
+elseif speciesTotal == 354 then
+  name = 'MINUN'
+elseif speciesTotal == 355 then
+  name = 'MAWILE'
+elseif speciesTotal == 356 then
+  name = 'MEDITITE'
+elseif speciesTotal == 357 then
+  name = 'MEDICHAM'
+elseif speciesTotal == 358 then
+  name = 'SWABLU'
+elseif speciesTotal == 359 then
+  name = 'ALTARIA'
+elseif speciesTotal == 360 then
+  name = 'WYNAUT'
+elseif speciesTotal == 361 then
+  name = 'DUSKULL'
+elseif speciesTotal == 362 then
+  name = 'DUSCLOPS'
+elseif speciesTotal == 363 then
+  name = 'ROSELIA'
+elseif speciesTotal == 364 then
+  name = 'SLAKOTH'
+elseif speciesTotal == 365 then
+  name = 'VIGOROTH'
+elseif speciesTotal == 366 then
+  name = 'SLAKING'
+elseif speciesTotal == 367 then
+  name = 'GULPIN'
+elseif speciesTotal == 368 then
+  name = 'SWALOT'
+elseif speciesTotal == 369 then
+  name = 'TROPIUS'
+elseif speciesTotal == 370 then
+  name = 'WHISMUR'
+elseif speciesTotal == 371 then
+  name = 'LOUDRED'
+elseif speciesTotal == 372 then
+  name = 'EXPLOUD'
+elseif speciesTotal == 373 then
+  name = 'CLAMPERL'
+elseif speciesTotal == 374 then
+  name = 'HUNTAIL'
+elseif speciesTotal == 375 then
+  name = 'GOREBYSS'
+elseif speciesTotal == 376 then
+  name = 'ABSOL'
+elseif speciesTotal == 377 then
+  name = 'SHUPPET'
+elseif speciesTotal == 378 then
+  name = 'BANETTE'
+elseif speciesTotal == 379 then
+  name = 'SEVIPER'
+elseif speciesTotal == 380 then
+  name = 'ZANGOOSE'
+elseif speciesTotal == 381 then
+  name = 'RELICANTH'
+elseif speciesTotal == 382 then
+  name = 'ARON'
+elseif speciesTotal == 383 then
+  name = 'LAIRON'
+elseif speciesTotal == 384 then
+  name = 'AGGRON'
+elseif speciesTotal == 385 then
+  name = 'CASTFORM'
+elseif speciesTotal == 386 then
+  name = 'VOLBEAT'
+elseif speciesTotal == 387 then
+  name = 'ILLUMISE'
+elseif speciesTotal == 388 then
+  name = 'LILEEP'
+elseif speciesTotal == 389 then
+  name = 'CRADILY'
+elseif speciesTotal == 390 then
+  name = 'ANORITH'
+elseif speciesTotal == 391 then
+  name = 'ARMALDO'
+elseif speciesTotal == 392 then
+  name = 'RALTS'
+elseif speciesTotal == 393 then
+  name = 'KIRLIA'
+elseif speciesTotal == 394 then
+  name = 'GARDEVOIR'
+elseif speciesTotal == 395 then
+  name = 'BAGON'
+elseif speciesTotal == 396 then
+  name = 'SHELGON'
+elseif speciesTotal == 397 then
+  name = 'SALAMENCE'
+elseif speciesTotal == 398 then
+  name = 'BELDUM'
+elseif speciesTotal == 399 then
+  name = 'METANG'
+elseif speciesTotal == 400 then
+  name = 'METAGROSS'
+elseif speciesTotal == 401 then
+  name = 'REGIROCK'
+elseif speciesTotal == 402 then
+  name = 'REGICE'
+elseif speciesTotal == 403 then
+  name = 'REGISTEEL'
+elseif speciesTotal == 404 then
+  name = 'KYOGRE'
+elseif speciesTotal == 405 then
+  name = 'GROUDON'
+elseif speciesTotal == 406 then
+  name = 'RAYQUAZA'
+elseif speciesTotal == 407 then
+  name = 'LATIAS'
+elseif speciesTotal == 408 then
+  name = 'LATIOS'
+elseif speciesTotal == 409 then
+  name = 'JIRACHI'
+elseif speciesTotal == 410 then
+  name = 'DEOXYS'
+elseif speciesTotal == 411 then
+  name = 'CHIMECHO'
+end
+
+if species2Total == 1 then
+  name2 = 'BULBASAUR'
+elseif species2Total == 2 then
+  name2 = 'IVYSAUR'
+elseif species2Total == 3 then
+  name2 = 'VENASAUR'
+elseif species2Total == 4 then
+  name2 = 'CHARMANDER'
+elseif species2Total == 5 then
+  name2 = 'CHARMELEON'
+elseif species2Total == 6 then
+  name2 = 'CHARIZARD'
+elseif species2Total == 7 then
+  name2 = 'SQUIRTLE'
+elseif species2Total == 8 then
+  name2 = 'WARTORTLE'
+elseif species2Total == 9 then
+  name2 = 'BLASTOISE'
+elseif species2Total == 10 then
+  name2 = 'CATERPIE'
+elseif species2Total == 11 then
+  name2 = 'METAPOD'
+elseif species2Total == 12 then
+  name2 = 'BUTERFREE'
+elseif species2Total == 13 then
+  name2 = 'WEEDLE'
+elseif species2Total == 14 then
+  name2 = 'KAKUNA'
+elseif species2Total == 15 then
+  name2 = 'BEEDRILL'
+elseif species2Total == 16 then
+  name2 = 'PIDGEY'
+elseif species2Total == 17 then
+  name2 = 'PIDGEOTTO'
+elseif species2Total == 18 then
+  name2 = 'PIDGEOT'
+elseif species2Total == 19 then
+  name2 = 'RATTATA'
+elseif species2Total == 20 then
+  name2 = 'RATICATE'
+elseif species2Total == 21 then
+  name2 = 'SPEAROW'
+elseif species2Total == 22 then
+  name2 = 'FEAROW'
+elseif species2Total == 23 then
+  name2 = 'EKANS'
+elseif species2Total == 24 then
+  name2 = 'ARBOK'
+elseif species2Total == 25 then
+  name2 = 'PIKACHU'
+elseif species2Total == 26 then
+  name2 = 'RAICHU'
+elseif species2Total == 27 then
+  name2 = 'SANDSHREW'
+elseif species2Total == 28 then
+  name2 = 'SANDSLASH'
+elseif species2Total == 29 then
+  name2 = 'NIDORAN'
+elseif species2Total == 30 then
+  name2 = 'NIDORINA'
+elseif species2Total == 31 then
+  name2 = 'NIDOQUEEN'
+elseif species2Total == 32 then
+  name2 = 'NIDORAN'
+elseif species2Total == 33 then
+  name2 = 'NIDORINO'
+elseif species2Total == 34 then
+  name2 = 'NIDOKING'
+elseif species2Total == 35 then
+  name2 = 'CLEFAIRY'
+elseif species2Total == 36 then
+  name2 = 'CLEFABLE'
+elseif species2Total == 37 then
+  name2 = 'VULPIX'
+elseif species2Total == 38 then
+  name2 = 'NINETALES'
+elseif species2Total == 39 then
+  name2 = 'JIGGLYPUFF'
+elseif species2Total == 40 then
+  name2 = 'WIGGLYTUFF'
+elseif species2Total == 41 then
+  name2 = 'ZUBAT'
+elseif species2Total == 42 then
+  name2 = 'GOLBAT'
+elseif species2Total == 43 then
+  name2 = 'ODDISH'
+elseif species2Total == 44 then
+  name2 = 'GLOOM'
+elseif species2Total == 45 then
+  name2 = 'VILEPLUME'
+elseif species2Total == 46 then
+  name2 = 'PARAS'
+elseif species2Total == 47 then
+  name2 = 'PARASECT'
+elseif species2Total == 48 then
+  name2 = 'VENONAT'
+elseif species2Total == 49 then
+  name2 = 'VENOMOTH'
+elseif species2Total == 50 then
+  name2 = 'DIGLETT'
+elseif species2Total == 51 then
+  name2 = 'DUGTRIO'
+elseif species2Total == 52 then
+  name2 = 'MEOWTH'
+elseif species2Total == 53 then
+  name2 = 'PERSIAN'
+elseif species2Total == 54 then
+  name2 = 'PSYDUCK'
+elseif species2Total == 55 then
+  name2 = 'GOLDUCK'
+elseif species2Total == 56 then
+  name2 = 'MANKEY'
+elseif species2Total == 57 then
+  name2 = 'PRIMEAPE'
+elseif species2Total == 58 then
+  name2 = 'GROWLITHE'
+elseif species2Total == 59 then
+  name2 = 'ARCANINE'
+elseif species2Total == 60 then
+  name2 = 'POLIWAG'
+elseif species2Total == 61 then
+  name2 = 'POLIWHIRL'
+elseif species2Total == 62 then
+  name2 = 'POLIWRATH'
+elseif species2Total == 63 then
+  name2 = 'ABRA'
+elseif species2Total == 64 then
+  name2 = 'KADABRA'
+elseif species2Total == 65 then
+  name2 = 'ALAKAZAM'
+elseif species2Total == 66 then
+  name2 = 'MACHOP'
+elseif species2Total == 67 then
+  name2 = 'MACHOKE'
+elseif species2Total == 68 then
+  name2 = 'MACHAMP'
+elseif species2Total == 69 then
+  name2 = 'BELLSPROUT'
+elseif species2Total == 70 then
+  name2 = 'WEEPINBELL'
+elseif species2Total == 71 then
+  name2 = 'VICTREEBEL'
+elseif species2Total == 72 then
+  name2 = 'TENTACOOL'
+elseif species2Total == 73 then
+  name2 = 'TENTACRUEL'
+elseif species2Total == 74 then
+  name2 = 'GEODUDE'
+elseif species2Total == 75 then
+  name2 = 'GRAVELER'
+elseif species2Total == 76 then
+  name2 = 'GOLEM'
+elseif species2Total == 77 then
+  name2 = 'PONYTA'
+elseif species2Total == 78 then
+  name2 = 'RAPIDASH'
+elseif species2Total == 79 then
+  name2 = 'SLOWPOKE'
+elseif species2Total == 80 then
+  name2 = 'SLOWBRO'
+elseif species2Total == 81 then
+  name2 = 'MAGNEMITE'
+elseif species2Total == 82 then
+  name2 = 'MAGNETON'
+elseif species2Total == 83 then
+  name2 = 'FARFETCHD'
+elseif species2Total == 84 then
+  name2 = 'DODUO'
+elseif species2Total == 85 then
+  name2 = 'DODRIO'
+elseif species2Total == 86 then
+  name2 = 'SEEL'
+elseif species2Total == 87 then
+  name2 = 'DEWGONG'
+elseif species2Total == 88 then
+  name2 = 'GRIMER'
+elseif species2Total == 89 then
+  name2 = 'MUK'
+elseif species2Total == 90 then
+  name2 = 'SHELLDER'
+elseif species2Total == 91 then
+  name2 = 'CLOYSTER'
+elseif species2Total == 92 then
+  name2 = 'GASTLY'
+elseif species2Total == 93 then
+  name2 = 'HAUNTER'
+elseif species2Total == 94 then
+  name2 = 'GENGAR'
+elseif species2Total == 95 then
+  name2 = 'ONIX'
+elseif species2Total == 96 then
+  name2 = 'DROWZEE'
+elseif species2Total == 97 then
+  name2 = 'HYPNO'
+elseif species2Total == 98 then
+  name2 = 'KRABBY'
+elseif species2Total == 99 then
+  name2 = 'KINGLER'
+elseif species2Total == 100 then
+  name2 = 'VOLTORB'
+elseif species2Total == 101 then
+  name2 = 'ELECTRODE'
+elseif species2Total == 102 then
+  name2 = 'EXEGGCUTE'
+elseif species2Total == 103 then
+  name2 = 'EXEGGUTOR'
+elseif species2Total == 104 then
+  name2 = 'CUBONE'
+elseif species2Total == 105 then
+  name2 = 'MAROWAK'
+elseif species2Total == 106 then
+  name2 = 'HITMONLEE'
+elseif species2Total == 107 then
+  name2 = 'HITMONCHAN'
+elseif species2Total == 108 then
+  name2 = 'LICKITUNG'
+elseif species2Total == 109 then
+  name2 = 'KOFFING'
+elseif species2Total == 110 then
+  name2 = 'WEEZING'
+elseif species2Total == 111 then
+  name2 = 'RHYHORN'
+elseif species2Total == 112 then
+  name2 = 'RHYDON'
+elseif species2Total == 113 then
+  name2 = 'CHANSEY'
+elseif species2Total == 114 then
+  name2 = 'TANGELA'
+elseif species2Total == 115 then
+  name2 = 'KANGASKHAN'
+elseif species2Total == 116 then
+  name2 = 'HORSEA'
+elseif species2Total == 117 then
+  name2 = 'SEADRA'
+elseif species2Total == 118 then
+  name2 = 'GOLDEEN'
+elseif species2Total == 119 then
+  name2 = 'SEAKING'
+elseif species2Total == 120 then
+  name2 = 'STARYU'
+elseif species2Total == 121 then
+  name2 = 'STARMIE'
+elseif species2Total == 122 then
+  name2 = 'MR.MIME'
+elseif species2Total == 123 then
+  name2 = 'SCYTHER'
+elseif species2Total == 124 then
+  name2 = 'JYNX'
+elseif species2Total == 125 then
+  name2 = 'ELECTABUZZ'
+elseif species2Total == 126 then
+  name2 = 'MAGMAR'
+elseif species2Total == 127 then
+  name2 = 'PINSIR'
+elseif species2Total == 128 then
+  name2 = 'TAUROS'
+elseif species2Total == 129 then
+  name2 = 'MAGIKARP'
+elseif species2Total == 130 then
+  name2 = 'GYARADOS'
+elseif species2Total == 131 then
+  name2 = 'LAPRAS'
+elseif species2Total == 132 then
+  name2 = 'DITTO'
+elseif species2Total == 133 then
+  name2 = 'EEVEE'
+elseif species2Total == 134 then
+  name2 = 'VAPOREON'
+elseif species2Total == 135 then
+  name2 = 'JOLTEON'
+elseif species2Total == 136 then
+  name2 = 'FLAREON'
+elseif species2Total == 137 then
+  name2 = 'PORYGON'
+elseif species2Total == 138 then
+  name2 = 'OMANYTE'
+elseif species2Total == 139 then
+  name2 = 'OMASTAR'
+elseif species2Total == 140 then
+  name2 = 'KABUTO'
+elseif species2Total == 141 then
+  name2 = 'KABUTOPS'
+elseif species2Total == 142 then
+  name2 = 'AERODACTYL'
+elseif species2Total == 143 then
+  name2 = 'SNORLAX'
+elseif species2Total == 144 then
+  name2 = 'ARTICUNO'
+elseif species2Total == 145 then
+  name2 = 'ZAPDOS'
+elseif species2Total == 146 then
+  name2 = 'MOLTRES'
+elseif species2Total == 147 then
+  name2 = 'DRATINI'
+elseif species2Total == 148 then
+  name2 = 'DRAGONAIR'
+elseif species2Total == 149 then
+  name2 = 'DRAGONITE'
+elseif species2Total == 150 then
+  name2 = 'MEWTWO'
+elseif species2Total == 151 then
+  name2 = 'MEW'
+elseif species2Total == 152 then
+  name2 = 'CHIKORITA'
+elseif species2Total == 153 then
+  name2 = 'BAYLEEF'
+elseif species2Total == 154 then
+  name2 = 'MEGANIUM'
+elseif species2Total == 155 then
+  name2 = 'CYNDAQUIL'
+elseif species2Total == 156 then
+  name2 = 'QUILAVA'
+elseif species2Total == 157 then
+  name2 = 'TYPHLOSION'
+elseif species2Total == 158 then
+  name2 = 'TOTODILE'
+elseif species2Total == 159 then
+  name2 = 'CROCONAW'
+elseif species2Total == 160 then
+  name2 = 'FERALIGATR'
+elseif species2Total == 161 then
+  name2 = 'SENTRET'
+elseif species2Total == 162 then
+  name2 = 'FURRET'
+elseif species2Total == 163 then
+  name2 = 'HOOTHOOT'
+elseif species2Total == 164 then
+  name2 = 'NOCTOWL'
+elseif species2Total == 165 then
+  name2 = 'LEDYBA'
+elseif species2Total == 166 then
+  name2 = 'LEDIAN'
+elseif species2Total == 167 then
+  name2 = 'SPINARAK'
+elseif species2Total == 168 then
+  name2 = 'ARIADOS'
+elseif species2Total == 169 then
+  name2 = 'CROBAT'
+elseif species2Total == 170 then
+  name2 = 'CHINCHOU'
+elseif species2Total == 171 then
+  name2 = 'LANTURN'
+elseif species2Total == 172 then
+  name2 = 'PICHU'
+elseif species2Total == 173 then
+  name2 = 'CLEFFA'
+elseif species2Total == 174 then
+  name2 = 'IGGLYBUFF'
+elseif species2Total == 175 then
+  name2 = 'TOGEPI'
+elseif species2Total == 176 then
+  name2 = 'TOGETIC'
+elseif species2Total == 177 then
+  name2 = 'NATU'
+elseif species2Total == 178 then
+  name2 = 'XATU'
+elseif species2Total == 179 then
+  name2 = 'MAREEP'
+elseif species2Total == 180 then
+  name2 = 'FLAAFFY'
+elseif species2Total == 181 then
+  name2 = 'AMPHAROS'
+elseif species2Total == 182 then
+  name2 = 'BELLOSSOM'
+elseif species2Total == 183 then
+  name2 = 'MARILL'
+elseif species2Total == 184 then
+  name2 = 'AZUMARILL'
+elseif species2Total == 185 then
+  name2 = 'SUDOWOODO'
+elseif species2Total == 186 then
+  name2 = 'POLITOED'
+elseif species2Total == 187 then
+  name2 = 'HOPPIP'
+elseif species2Total == 188 then
+  name2 = 'SKIPLOOM'
+elseif species2Total == 189 then
+  name2 = 'JUMPLUFF'
+elseif species2Total == 190 then
+  name2 = 'AIPOM'
+elseif species2Total == 191 then
+  name2 = 'SUNKERN'
+elseif species2Total == 192 then
+  name2 = 'SUNFLORA'
+elseif species2Total == 193 then
+  name2 = 'YANMA'
+elseif species2Total == 194 then
+  name2 = 'WOOPER'
+elseif species2Total == 195 then
+  name2 = 'QUAGSIRE'
+elseif species2Total == 196 then
+  name2 = 'ESPEON'
+elseif species2Total == 197 then
+  name2 = 'UMBREON'
+elseif species2Total == 198 then
+  name2 = 'MURKROW'
+elseif species2Total == 199 then
+  name2 = 'SLOWKING'
+elseif species2Total == 200 then
+  name2 = 'MISDREAVUS'
+elseif species2Total == 201 then
+  name2 = 'UNOWN'
+elseif species2Total == 202 then
+  name2 = 'WOBBUFFETT'
+elseif species2Total == 203 then
+  name2 = 'GIRAFARIG'
+elseif species2Total == 204 then
+  name2 = 'PINECO'
+elseif species2Total == 205 then
+  name2 = 'FORETRESS'
+elseif species2Total == 206 then
+  name2 = 'DUNSPARCE'
+elseif species2Total == 207 then
+  name2 = 'GLIGAR'
+elseif species2Total == 208 then
+  name2 = 'STEELIX'
+elseif species2Total == 209 then
+  name2 = 'SNUBBULL'
+elseif species2Total == 210 then
+  name2 = 'GRANBULL'
+elseif species2Total == 211 then
+  name2 = 'QUILFISH'
+elseif species2Total == 212 then
+  name2 = 'SCIZOR'
+elseif species2Total == 213 then
+  name2 = 'SHUCKLE'
+elseif species2Total == 214 then
+  name2 = 'HERACROSS'
+elseif species2Total == 215 then
+  name2 = 'SNEAZLE'
+elseif species2Total == 216 then
+  name2 = 'TEDDIURSA'
+elseif species2Total == 217 then
+  name2 = 'URSARING'
+elseif species2Total == 218 then
+  name2 = 'SLUGMA'
+elseif species2Total == 219 then
+  name2 = 'MAGCARGO'
+elseif species2Total == 220 then
+  name2 = 'SWINUB'
+elseif species2Total == 221 then
+  name2 = 'PILOSWINE'
+elseif species2Total == 222 then
+  name2 = 'CORSOLA'
+elseif species2Total == 223 then
+  name2 = 'REMORAID'
+elseif species2Total == 224 then
+  name2 = 'OCTILLERY'
+elseif species2Total == 225 then
+  name2 = 'DELIBIRD'
+elseif species2Total == 226 then
+  name2 = 'MANTINE'
+elseif species2Total == 227 then
+  name2 = 'SKARMORY'
+elseif species2Total == 228 then
+  name2 = 'HOUNDOUR'
+elseif species2Total == 229 then
+  name2 = 'HOUNDOOM'
+elseif species2Total == 230 then
+  name2 = 'KINGDRA'
+elseif species2Total == 231 then
+  name2 = 'PHANPY'
+elseif species2Total == 232 then
+  name2 = 'DONAPHAN'
+elseif species2Total == 233 then
+  name2 = 'PORYGON2'
+elseif species2Total == 234 then
+  name2 = 'STANTLER'
+elseif species2Total == 235 then
+  name2 = 'SMEARGLE'
+elseif species2Total == 236 then
+  name2 = 'TYROGUE'
+elseif species2Total == 237 then
+  name2 = 'HITMONTOP'
+elseif species2Total == 238 then
+  name2 = 'SMOOCHUM'
+elseif species2Total == 239 then
+  name2 = 'ELEKID'
+elseif species2Total == 240 then
+  name2 = 'MAGBY'
+elseif species2Total == 241 then
+  name2 = 'MILTANK'
+elseif species2Total == 242 then
+  name2 = 'BLISSEY'
+elseif species2Total == 243 then
+  name2 = 'RAIKOU'
+elseif species2Total == 244 then
+  name2 = 'ENTEI'
+elseif species2Total == 245 then
+  name2 = 'SUICUNE'
+elseif species2Total == 246 then
+  name2 = 'LARVITAR'
+elseif species2Total == 247 then
+  name2 = 'PUPITAR'
+elseif species2Total == 248 then
+  name2 = 'TYRANITAR'
+elseif species2Total == 249 then
+  name2 = 'LUGIA'
+elseif species2Total == 250 then
+  name2 = 'HO-OH'
+elseif species2Total == 251 then
+  name2 = 'CELEBI'
+elseif species2Total == 277 then
+  name2 = 'TREECKO'
+elseif species2Total == 278 then
+  name2 = 'GROVYLE'
+elseif species2Total == 279 then
+  name2 = 'SCEPTILE'
+elseif species2Total == 280 then
+  name2 = 'TORCHIC'
+elseif species2Total == 281 then
+  name2 = 'COMBUSKEN'
+elseif species2Total == 282 then
+  name2 = 'BLAZIKEN'
+elseif species2Total == 283 then
+  name2 = 'MUDKIP'
+elseif species2Total == 284 then
+  name2 = 'MARSHTOMP'
+elseif species2Total == 285 then
+  name2 = 'SWAMPERT'
+elseif species2Total == 286 then
+  name2 = 'POOCHYENA'
+elseif species2Total == 287 then
+  name2 = 'MIGHTYENA'
+elseif species2Total == 288 then
+  name2 = 'ZIGZAGOON'
+elseif species2Total == 289 then
+  name2 = 'LINOONE'
+elseif species2Total == 290 then
+  name2 = 'WURMPLE'
+elseif species2Total == 291 then
+  name2 = 'SILCOON'
+elseif species2Total == 292 then
+  name2 = 'BEAUTIFLY'
+elseif species2Total == 293 then
+  name2 = 'CASCOON'
+elseif species2Total == 294 then
+  name2 = 'DUSTOX'
+elseif species2Total == 295 then
+  name2 = 'LOTAD'
+elseif species2Total == 296 then
+  name2 = 'LOMBRE'
+elseif species2Total == 297 then
+  name2 = 'LUDICOLO'
+elseif species2Total == 298 then
+  name2 = 'SEEDOT'
+elseif species2Total == 299 then
+  name2 = 'NUZLEAF'
+elseif species2Total == 300 then
+  name2 = 'SHIFTRY'
+elseif species2Total == 301 then
+  name2 = 'NINCADA'
+elseif species2Total == 302 then
+  name2 = 'NINJASK'
+elseif species2Total == 303 then
+  name2 = 'SHEDINJA'
+elseif species2Total == 304 then
+  name2 = 'TAILOW'
+elseif species2Total == 305 then
+  name2 = 'SWELLOW'
+elseif species2Total == 306 then
+  name2 = 'SHROOMISH'
+elseif species2Total == 307 then
+  name2 = 'BRELOOM'
+elseif species2Total == 308 then
+  name2 = 'SPINDA'
+elseif species2Total == 309 then
+  name2 = 'WINGULL'
+elseif species2Total == 310 then
+  name2 = 'PELIPPER'
+elseif species2Total == 311 then
+  name2 = 'SURSKIT'
+elseif species2Total == 312 then
+  name2 = 'MASQUERAIN'
+elseif species2Total == 313 then
+  name2 = 'WAILMER'
+elseif species2Total == 314 then
+  name2 = 'WAILORD'
+elseif species2Total == 315 then
+  name2 = 'SKITTY'
+elseif species2Total == 316 then
+  name2 = 'DELCATTY'
+elseif species2Total == 317 then
+  name2 = 'KECLEON'
+elseif species2Total == 318 then
+  name2 = 'BALTOY'
+elseif species2Total == 319 then
+  name2 = 'CLAYDOL'
+elseif species2Total == 320 then
+  name2 = 'NOSEPASS'
+elseif species2Total == 321 then
+  name2 = 'TORKOAL'
+elseif species2Total == 322 then
+  name2 = 'SABLEYE'
+elseif species2Total == 323 then
+  name2 = 'BARBOACH'
+elseif species2Total == 324 then
+  name2 = 'WHISCASH'
+elseif species2Total == 325 then
+  name2 = 'LUVDISC'
+elseif species2Total == 326 then
+  name2 = 'CORPHISH'
+elseif species2Total == 327 then
+  name2 = 'CRAWDAUNT'
+elseif species2Total == 328 then
+  name2 = 'FEEBAS'
+elseif species2Total == 329 then
+  name2 = 'MILOTIC'
+elseif species2Total == 330 then
+  name2 = 'CARVANHA'
+elseif species2Total == 331 then
+  name2 = 'SHARPEDO'
+elseif species2Total == 332 then
+  name2 = 'TRAPINCH'
+elseif species2Total == 333 then
+  name2 = 'VIBRAVA'
+elseif species2Total == 334 then
+  name2 = 'FLYGON'
+elseif species2Total == 335 then
+  name2 = 'MAKUHITA'
+elseif species2Total == 336 then
+  name2 = 'HARIYAMA'
+elseif species2Total == 337 then
+  name2 = 'ELECTRIKE'
+elseif species2Total == 338 then
+  name2 = 'MANECTRIC'
+elseif species2Total == 339 then
+  name2 = 'NUMEL'
+elseif species2Total == 340 then
+  name2 = 'CAMERUPT'
+elseif species2Total == 341 then
+  name2 = 'SPHEAL'
+elseif species2Total == 342 then
+  name2 = 'SEALEO'
+elseif species2Total == 343 then
+  name2 = 'WALREIN'
+elseif species2Total == 344 then
+  name2 = 'CACNEA'
+elseif species2Total == 345 then
+  name2 = 'CACTURNE'
+elseif species2Total == 346 then
+  name2 = 'SNORUNT'
+elseif species2Total == 347 then
+  name2 = 'GLALIE'
+elseif species2Total == 348 then
+  name2 = 'LUNATONE'
+elseif species2Total == 349 then
+  name2 = 'SOLROCK'
+elseif species2Total == 350 then
+  name2 = 'AZURILL'
+elseif species2Total == 351 then
+  name2 = 'SPOINK'
+elseif species2Total == 352 then
+  name2 = 'GRUMPIG'
+elseif species2Total == 353 then
+  name2 = 'PLUSLE'
+elseif species2Total == 354 then
+  name2 = 'MINUN'
+elseif species2Total == 355 then
+  name2 = 'MAWILE'
+elseif species2Total == 356 then
+  name2 = 'MEDITITE'
+elseif species2Total == 357 then
+  name2 = 'MEDICHAM'
+elseif species2Total == 358 then
+  name2 = 'SWABLU'
+elseif species2Total == 359 then
+  name2 = 'ALTARIA'
+elseif species2Total == 360 then
+  name2 = 'WYNAUT'
+elseif species2Total == 361 then
+  name2 = 'DUSKULL'
+elseif species2Total == 362 then
+  name2 = 'DUSCLOPS'
+elseif species2Total == 363 then
+  name2 = 'ROSELIA'
+elseif species2Total == 364 then
+  name2 = 'SLAKOTH'
+elseif species2Total == 365 then
+  name2 = 'VIGOROTH'
+elseif species2Total == 366 then
+  name2 = 'SLAKING'
+elseif species2Total == 367 then
+  name2 = 'GULPIN'
+elseif species2Total == 368 then
+  name2 = 'SWALOT'
+elseif species2Total == 369 then
+  name2 = 'TROPIUS'
+elseif species2Total == 370 then
+  name2 = 'WHISMUR'
+elseif species2Total == 371 then
+  name2 = 'LOUDRED'
+elseif species2Total == 372 then
+  name2 = 'EXPLOUD'
+elseif species2Total == 373 then
+  name2 = 'CLAMPERL'
+elseif species2Total == 374 then
+  name2 = 'HUNTAIL'
+elseif species2Total == 375 then
+  name2 = 'GOREBYSS'
+elseif species2Total == 376 then
+  name2 = 'ABSOL'
+elseif species2Total == 377 then
+  name2 = 'SHUPPET'
+elseif species2Total == 378 then
+  name2 = 'BANETTE'
+elseif species2Total == 379 then
+  name2 = 'SEVIPER'
+elseif species2Total == 380 then
+  name2 = 'ZANGOOSE'
+elseif species2Total == 381 then
+  name2 = 'RELICANTH'
+elseif species2Total == 382 then
+  name2 = 'ARON'
+elseif species2Total == 383 then
+  name2 = 'LAIRON'
+elseif species2Total == 384 then
+  name2 = 'AGGRON'
+elseif species2Total == 385 then
+  name2 = 'CASTFORM'
+elseif species2Total == 386 then
+  name2 = 'VOLBEAT'
+elseif species2Total == 387 then
+  name2 = 'ILLUMISE'
+elseif species2Total == 388 then
+  name2 = 'LILEEP'
+elseif species2Total == 389 then
+  name2 = 'CRADILY'
+elseif species2Total == 390 then
+  name2 = 'ANORITH'
+elseif species2Total == 391 then
+  name2 = 'ARMALDO'
+elseif species2Total == 392 then
+  name2 = 'RALTS'
+elseif species2Total == 393 then
+  name2 = 'KIRLIA'
+elseif species2Total == 394 then
+  name2 = 'GARDEVOIR'
+elseif species2Total == 395 then
+  name2 = 'BAGON'
+elseif species2Total == 396 then
+  name2 = 'SHELGON'
+elseif species2Total == 397 then
+  name2 = 'SALAMENCE'
+elseif species2Total == 398 then
+  name2 = 'BELDUM'
+elseif species2Total == 399 then
+  name2 = 'METANG'
+elseif species2Total == 400 then
+  name2 = 'METAGROSS'
+elseif species2Total == 401 then
+  name2 = 'REGIROCK'
+elseif species2Total == 402 then
+  name2 = 'REGICE'
+elseif species2Total == 403 then
+  name2 = 'REGISTEEL'
+elseif species2Total == 404 then
+  name2 = 'KYOGRE'
+elseif species2Total == 405 then
+  name2 = 'GROUDON'
+elseif species2Total == 406 then
+  name2 = 'RAYQUAZA'
+elseif species2Total == 407 then
+  name2 = 'LATIAS'
+elseif species2Total == 408 then
+  name2 = 'LATIOS'
+elseif species2Total == 409 then
+  name2 = 'JIRACHI'
+elseif species2Total == 410 then
+  name2 = 'DEOXYS'
+elseif species2Total == 411 then
+  name2 = 'CHIMECHO'
+end
+
+  writeString(nameAddr1, name, 1)
+  writeString(nameAddr2, name, 1)
+  writeString(nameAddr3, name2, 1)
+  writeString(nameAddr4, name2, 1)
+
+slen1 = string.len(name)
+slen2 = string.len(name2)
+slen11 = string.format("0x%X", slen1)
+slen22 = string.format("0x%X", slen2)
+
+writeBytes(nameAddr1+slen11*2, 0, 0)
+writeBytes(nameAddr2+slen11*2, 0, 0)
+writeBytes(nameAddr3+slen22*2, 0, 0)
+writeBytes(nameAddr4+slen22*2, 0, 0)
+
+if index2 ~= 6 then
+if switch1 == 0 then
+  _G.countdown1 = 0
+else
+  if _G.countdown1 < 500 then
+    writeBytes("_EnemyData+797C",_G.p1hp1,_G.p1hp2)
+    _G.countdown1 = _G.countdown1 + 1
+  end
+end
+
+if switch2 == 0 then
+  _G.countdown2 = 0
+else
+  if _G.countdown2 < 500 then
+    writeBytes("_EnemyData+7C7C",_G.p2hp1,_G.p2hp2)
+    _G.countdown2 = _G.countdown2 + 1
+  end
+end
+
+if switch3 == 345000576 then
+    writeBytes("_EnemyData+797C",_G.p1hp1,_G.p1hp2)
+elseif switch3 == 14042531190 then
+    writeBytes("_EnemyData+7C7C",_G.p2hp1,_G.p2hp2)
+end
+end
+end
+
+function doall1()
+   writeBytes("_EnemyData+7986",_G.Lv)
+   writeBytes("_EnemyData+7989",_G.Lv)
+   writeBytes("_EnemyData+7978",_G.intspeciesByte1,_G.intspeciesByte2)
+   writeBytes("_EnemyData+7A08",_G.p1hp1,_G.p1hp2)
+   writeBytes("_EnemyData+7A0A",_G.p1atk1,_G.p1atk2)
+   writeBytes("_EnemyData+7A0C",_G.p1def1,_G.p1def2)
+   writeBytes("_EnemyData+7A0E",_G.p1satk1,_G.p1satk2)
+   writeBytes("_EnemyData+7A10",_G.p1sdef1,_G.p1sdef2)
+   writeBytes("_EnemyData+7A12",_G.p1spd1,_G.p1spd2)
+   if ((checkbox_getState(UDF1.CECheckbox4)) == 1) then
+   writeBytes("_EnemyData+7A33",_G.intshadow1)
+   end
+   if ((checkbox_getState(UDF1.CECheckbox5)) == 1) then
+   writeBytes("_EnemyData+9381",_G.intability1)
+   end
+   writeBytes("_EnemyData+7C86",_G.Lv)
+   writeBytes("_EnemyData+7C89",_G.Lv)
+   writeBytes("_EnemyData+7C78",_G.intspecies2Byte1,_G.intspecies2Byte2)
+   writeBytes("_EnemyData+7D08",_G.p2hp1,_G.p2hp2)
+   writeBytes("_EnemyData+7D0A",_G.p2atk1,_G.p2atk2)
+   writeBytes("_EnemyData+7D0C",_G.p2def1,_G.p2def2)
+   writeBytes("_EnemyData+7D0E",_G.p2satk1,_G.p2satk2)
+   writeBytes("_EnemyData+7D10",_G.p2sdef1,_G.p2sdef2)
+   writeBytes("_EnemyData+7D12",_G.p2spd1,_G.p2spd2)
+   if ((checkbox_getState(UDF1.CECheckbox4)) == 1) then
+   writeBytes("_EnemyData+7D33",_G.intshadow2)
+   end
+   if ((checkbox_getState(UDF1.CECheckbox5)) == 1) then
+   writeBytes("_EnemyData+9C15",_G.intability2)
+   end
+   while (_G.intatk1Byte2 == 226 and _G.intatk1Byte1 == 0) or (_G.intatk1Byte2 == 46 and _G.intatk1Byte1 == 0) or (_G.intatk1Byte2 == 18 and _G.intatk1Byte1 == 0) do
+      _G.intatk1Byte2 = math.random(1,255)
+   end
+   while (_G.intatk2Byte2 == 226 and _G.intatk2Byte1 == 0) or (_G.intatk2Byte2 == 46 and _G.intatk2Byte1 == 0) or (_G.intatk2Byte2 == 18 and _G.intatk2Byte1 == 0) do
+      _G.intatk2Byte2 = math.random(1,255)
+   end
+   while (_G.intatk3Byte2 == 226 and _G.intatk3Byte1 == 0) or (_G.intatk3Byte2 == 46 and _G.intatk3Byte1 == 0) or (_G.intatk3Byte2 == 18 and _G.intatk3Byte1 == 0) do
+      _G.intatk3Byte2 = math.random(1,255)
+   end
+   while (_G.intatk4Byte2 == 226 and _G.intatk4Byte1 == 0) or (_G.intatk4Byte2 == 46 and _G.intatk4Byte1 == 0) or (_G.intatk4Byte2 == 18 and _G.intatk4Byte1 == 0) do
+      _G.intatk4Byte2 = math.random(1,255)
+   end
+   writeBytes("_EnemyData+79F8",_G.intatk1Byte1,_G.intatk1Byte2)
+   writeBytes("_EnemyData+79FC",_G.intatk2Byte1,_G.intatk2Byte2)
+   writeBytes("_EnemyData+7A00",_G.intatk3Byte1,_G.intatk3Byte2)
+   writeBytes("_EnemyData+7A04",_G.intatk4Byte1,_G.intatk4Byte2)
+   while (_G.p2intatk1Byte2 == 226 and _G.p2intatk1Byte1 == 0) or (_G.p2intatk1Byte2 == 46 and _G.p2intatk1Byte1 == 0) or (_G.p2intatk1Byte2 == 18 and _G.p2intatk1Byte1 == 0) do
+      _G.p2intatk1Byte2 = math.random(1,255)
+   end
+   while (_G.p2intatk2Byte2 == 226 and _G.p2intatk2Byte1 == 0) or (_G.p2intatk2Byte2 == 46 and _G.p2intatk2Byte1 == 0) or (_G.p2intatk2Byte2 == 18 and _G.p2intatk2Byte1 == 0) do
+      _G.p2intatk2Byte2 = math.random(1,255)
+   end
+   while (_G.p2intatk3Byte2 == 226 and _G.p2intatk3Byte1 == 0) or (_G.p2intatk3Byte2 == 46 and _G.p2intatk3Byte1 == 0) or (_G.p2intatk3Byte2 == 18 and _G.p2intatk3Byte1 == 0) do
+      _G.p2intatk3Byte2 = math.random(1,255)
+   end
+   while (_G.p2intatk4Byte2 == 226 and _G.p2intatk4Byte1 == 0) or (_G.p2intatk4Byte2 == 46 and _G.p2intatk4Byte1 == 0) or (_G.p2intatk4Byte2 == 18 and _G.p2intatk4Byte1 == 0) do
+      _G.p2intatk4Byte2 = math.random(1,255)
+   end
+   writeBytes("_EnemyData+7CF8",_G.p2intatk1Byte1,_G.p2intatk1Byte2)
+   writeBytes("_EnemyData+7CFC",_G.p2intatk2Byte1,_G.p2intatk2Byte2)
+   writeBytes("_EnemyData+7D00",_G.p2intatk3Byte1,_G.p2intatk3Byte2)
+   writeBytes("_EnemyData+7D04",_G.p2intatk4Byte1,_G.p2intatk4Byte2)
+end
+
+function doall2()
+   writeBytes("_EnemyData+7978",_G.intspeciesByte1,_G.intspeciesByte2)
+   if ((checkbox_getState(UDF1.CECheckbox4)) == 1) then
+   writeBytes("_EnemyData+7A33",_G.intshadow1)
+   end
+   writeBytes("_EnemyData+7C78",_G.intspecies2Byte1,_G.intspecies2Byte2)
+   if ((checkbox_getState(UDF1.CECheckbox4)) == 1) then
+   writeBytes("_EnemyData+7D33",_G.intshadow2)
+   end
+   if ((checkbox_getState(UDF1.CECheckbox5)) == 1) then
+   writeBytes("_EnemyData+9381",_G.intability1)
+   end
+   if ((checkbox_getState(UDF1.CECheckbox5)) == 1) then
+   writeBytes("_EnemyData+9C15",_G.intability2)
+   end
+   while (_G.intatk1Byte2 == 226 and _G.intatk1Byte1 == 0) or (_G.intatk1Byte2 == 46 and _G.intatk1Byte1 == 0) or (_G.intatk1Byte2 == 18 and _G.intatk1Byte1 == 0) do
+      _G.intatk1Byte2 = math.random(1,255)
+   end
+   while (_G.intatk2Byte2 == 226 and _G.intatk2Byte1 == 0) or (_G.intatk2Byte2 == 46 and _G.intatk2Byte1 == 0) or (_G.intatk2Byte2 == 18 and _G.intatk2Byte1 == 0) do
+      _G.intatk2Byte2 = math.random(1,255)
+   end
+   while (_G.intatk3Byte2 == 226 and _G.intatk3Byte1 == 0) or (_G.intatk3Byte2 == 46 and _G.intatk3Byte1 == 0) or (_G.intatk3Byte2 == 18 and _G.intatk3Byte1 == 0) do
+      _G.intatk3Byte2 = math.random(1,255)
+   end
+   while (_G.intatk4Byte2 == 226 and _G.intatk4Byte1 == 0) or (_G.intatk4Byte2 == 46 and _G.intatk4Byte1 == 0) or (_G.intatk4Byte2 == 18 and _G.intatk4Byte1 == 0) do
+      _G.intatk4Byte2 = math.random(1,255)
+   end
+   writeBytes("_EnemyData+79F8",_G.intatk1Byte1,_G.intatk1Byte2)
+   writeBytes("_EnemyData+79FC",_G.intatk2Byte1,_G.intatk2Byte2)
+   writeBytes("_EnemyData+7A00",_G.intatk3Byte1,_G.intatk3Byte2)
+   writeBytes("_EnemyData+7A04",_G.intatk4Byte1,_G.intatk4Byte2)
+   while (_G.p2intatk1Byte2 == 226 and _G.p2intatk1Byte1 == 0) or (_G.p2intatk1Byte2 == 46 and _G.p2intatk1Byte1 == 0) or (_G.p2intatk1Byte2 == 18 and _G.p2intatk1Byte1 == 0) do
+      _G.p2intatk1Byte2 = math.random(1,255)
+   end
+   while (_G.p2intatk2Byte2 == 226 and _G.p2intatk2Byte1 == 0) or (_G.p2intatk2Byte2 == 46 and _G.p2intatk2Byte1 == 0) or (_G.p2intatk2Byte2 == 18 and _G.p2intatk2Byte1 == 0) do
+      _G.p2intatk2Byte2 = math.random(1,255)
+   end
+   while (_G.p2intatk3Byte2 == 226 and _G.p2intatk3Byte1 == 0) or (_G.p2intatk3Byte2 == 46 and _G.p2intatk3Byte1 == 0) or (_G.p2intatk3Byte2 == 18 and _G.p2intatk3Byte1 == 0) do
+      _G.p2intatk3Byte2 = math.random(1,255)
+   end
+   while (_G.p2intatk4Byte2 == 226 and _G.p2intatk4Byte1 == 0) or (_G.p2intatk4Byte2 == 46 and _G.p2intatk4Byte1 == 0) or (_G.p2intatk4Byte2 == 18 and _G.p2intatk4Byte1 == 0) do
+      _G.p2intatk4Byte2 = math.random(1,255)
+   end
+   writeBytes("_EnemyData+7CF8",_G.p2intatk1Byte1,_G.p2intatk1Byte2)
+   writeBytes("_EnemyData+7CFC",_G.p2intatk2Byte1,_G.p2intatk2Byte2)
+   writeBytes("_EnemyData+7D00",_G.p2intatk3Byte1,_G.p2intatk3Byte2)
+   writeBytes("_EnemyData+7D04",_G.p2intatk4Byte1,_G.p2intatk4Byte2)
+end
+
+if health_hotkey ~= nil then
+  health_hotkey.destroy()
+end
+health_hotkey = createHotkey(function()
+   writeBytes("_EnemyData+797C",_G.p1hp1,_G.p1hp2)
+end, VK_1)
+
+if health2_hotkey ~= nil then
+  health2_hotkey.destroy()
+end
+health2_hotkey = createHotkey(function()
+   writeBytes("_EnemyData+7C7C",_G.p2hp1,_G.p2hp2)
+end, VK_2)
+
+function CECheckbox1Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox1)) == 1) then
+
+      r=createTimer(nil)
+      timer_setInterval(r, 1)
+      timer_onTimer(r, xd)
+    else
+      r.destroy();
+      r=nil
+    end
+end
+
+function CECheckbox2Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox2)) == 1) then
+
+      s=createTimer(nil)
+      timer_setInterval(s, 1)
+      timer_onTimer(s, shiny)
+    else
+      s.destroy();
+      s=nil
+    end
+end
+
+function CECheckbox3Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox3)) == 1) then
+
+    t=createTimer(nil)
+    timer_setInterval(t, 1)
+    timer_onTimer(t, random)
+    else
+      t.destroy();
+      t=nil
+    end
+    checkbox_setState(UDF1.CECheckbox7, 1)
+    CECheckbox7Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox3)) == 0) then
+    checkbox_setState(UDF1.CECheckbox7, 0)
+    CECheckbox7Change(sender)
+end
+end
+
+function CECheckbox6Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox6)) == 1) then
+
+    t=createTimer(nil)
+    timer_setInterval(t, 1)
+    timer_onTimer(t, typemod)
+    else
+      t.destroy();
+      t=nil
+    end
+end
+
+function CECheckbox7Change(sender)
+   if ((checkbox_getState(UDF1.CECheckbox7)) == 1) then
+
+    t=createTimer(nil)
+    timer_setInterval(t, 1)
+    timer_onTimer(t, fixme)
+    else
+      t.destroy();
+      t=nil
+    end
+end
+
+function CEComboBox1Select(sender)
+   index = UDF1.CEComboBox1.ItemIndex
+   if index == -1 then return end;
+
+
+   if index == 0 then
+      t=createTimer(nil)
+      timer_setInterval(t, 1)
+      timer_onTimer(t, pure)
+   elseif index == 1 then
+      t=createTimer(nil)
+      timer_setInterval(t, 1)
+      timer_onTimer(t, shadow)
+   end
+end
+
+UDF1.show()
