@@ -3669,4 +3669,15 @@ function CECheckbox7Change(sender)
     end
 end
 
+function set_MEM_MAPPED()
+  local s = getSettings()
+  local oldValue = s.Value['MEM_MAPPED']
+  s.Value['MEM_MAPPED'] = 1
+  reloadSettingsFromRegistry()
+  s.Value['MEM_MAPPED'] = oldValue
+  s.destroy()
+end
+
+set_MEM_MAPPED()
+
 UDF1.show()
