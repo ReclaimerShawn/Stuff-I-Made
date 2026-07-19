@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Infinite Shop Points on Use"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+mov ebx, 0x98967F
+mov [rbp+78],ebx
+lea rdx,[rsp+20]
+mov eax, [re3.exe+9A45B60]
+
+originalcode:
+//mov [rbp+78],ebx
+//lea rdx,[rsp+20]
+//mov eax, [re3.exe+9A45B60]
+
+exit:
+jmp returnhere
+
+"re3.exe"+1B06076:
+jmp newmem
+returnhere:
+
+[DISABLE]
+"re3.exe"+1B06076:
+mov [rbp+78],ebx
+lea rdx,[rsp+20]
+mov eax, [re3.exe+9A45B60]
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Infinite Ammo (and Item Finder)"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+globalalloc(ammo, 8)
+
+newmem:
+mov rdi, rcx
+add rdi, 0x20
+mov [ammo], rdi
+mov rdi,[rsp+40]
+mov rbx,[rsp+48]
+add rsp, 20
+
+originalcode:
+//mov [rcx+20],eax
+//mov rdi,[rsp+40]
+//mov rbx,[rsp+48]
+//add rsp, 20
+
+exit:
+jmp returnhere
+
+"re3.exe"+1FC2201:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+[DISABLE]
+"re3.exe"+1FC2201:
+mov [rcx+20],eax
+mov rdi,[rsp+40]
+mov rbx,[rsp+48]
+add rsp, 20
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Ammo Count"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[ammo]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Upgrade ID"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[ammo]-0x8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Item ID"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0001:G19 Handgun
+0002:G18 Handgun (Burst Model)
+0003:G18 Handgun
+0004:Samurai Edge
+0007:Infinite MUP Handgun
+000B:M3 Shotgun
+0015:CQBR Assault Rifle
+0016:Infinite CQBR Assault Rifle
+001F:.44 AE Lightning Hawk
+0020:RAI-DEN
+002A:MGL Grenade Launcher
+002D:Rocket Launcher (Different Model)
+002E:Combat Knife
+002F:Survival Knife
+0030:HOT DOGGER
+0031:Infinite Rocket Launcher
+0032:Railgun
+0041:Hand Grenade
+0042:Flash Grenade
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[ammo]-0xC</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Health Options"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Infinite Health"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(self)
+
+newmem:
+cmp [r9+54], 0x4B0
+je self
+mov [r9+58],eax
+self:
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+
+originalcode:
+//mov [r9+58],eax
+//ret 
+
+exit:
+jmp returnhere
+
+"re3.exe"+1F6D370:
+jmp newmem
+
+returnhere:
+
+[DISABLE]
+re3.exe+1F6D370:
+mov [r9+58],eax
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Insta-Kill"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(self)
+label(end)
+
+newmem:
+cmp [r9+54], 0x4B0
+je self
+mov [r9+58], 0x0
+jmp end
+self:
+mov [r9+58], eax
+end:
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+
+originalcode:
+//mov [r9+58],eax
+//ret 
+
+exit:
+jmp returnhere
+
+"re3.exe"+1F6D370:
+jmp newmem
+
+returnhere:
+
+[DISABLE]
+re3.exe+1F6D370:
+mov [r9+58],eax
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Infinite Health and Insta-Kill"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(self)
+
+newmem:
+cmp [r9+54], 0x4B0
+je self
+mov [r9+58], 0x0
+self:
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+
+originalcode:
+//mov [r9+58],eax
+//ret 
+
+exit:
+jmp returnhere
+
+"re3.exe"+1F6D370:
+jmp newmem
+
+returnhere:
+
+[DISABLE]
+re3.exe+1F6D370:
+mov [r9+58],eax
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>ammo</Name>
+      <Address>1272BDA0000</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+</CheatTable>

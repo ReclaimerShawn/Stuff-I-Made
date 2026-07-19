@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Infinite Ammo (and Weapon Finder)"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+globalalloc(ammo, 8)
+
+newmem:
+lea r8, [rsp+18]
+cmovge rax, r8
+mov eax, [rax]
+mov rbx, rcx
+add rbx, 0x20
+mov [ammo], rbx
+
+originalcode:
+//mov [rcx+20],eax
+//mov rdi,[rsp+40]
+
+exit:
+jmp returnhere
+
+"re2.exe"+C1C7C6:
+jmp newmem
+returnhere:
+
+[DISABLE]
+"re2.exe"+C1C7C6:
+lea r8, [rsp+18]
+cmovge rax, r8
+mov eax, [rax]
+mov [rcx+20],eax
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Ammo Address"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[ammo]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Upgrade ID"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[ammo]-0x8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Item ID"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0001:Matilda (Handgun)
+0002:M19 (Handgun)
+0003:JMP Hp3 (Handgun)
+0004:Quickdraw Army (Handgun)
+0005:M19 (Sideways, Examine crashes)
+0007:MUP (Handgun)
+0008:Broom Hc (Handgun)
+0009:SLS 60 (Handgun)
+000B:W-870 (Shotgun)
+0015:MQ 11 (SMG)
+0017:LE 5 (SMG-Infinite)
+001F:Lightning Hawk (Magnum)
+0021:Chief Iron's Revolver
+0029:EMF Visualizer
+002A:Grenade Launcher
+002B:Chemical Flamethrower
+002C:Spark Shot
+002D:ATM-4
+002E:Combat Knife
+002F:Combat Knife (Infinite)
+0031:Anti-Tank Rocket
+0032:Minigun
+0041:Hand Grenade
+0042:Flash Grenade
+0052:Samurai Edge (Infinite)
+00DE:ATM-4 (Infinite)
+00F2:Anti-Tank Rocket (Infinite)
+00FC:Minigun (Infinite)
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[ammo]-0xC</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Health Options"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Infinite Health"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(self)
+
+newmem:
+cmp [r9+54], 0x4B0
+je self
+mov [r9+58],eax
+self:
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+
+originalcode:
+//mov [r9+58],eax
+//ret 
+
+exit:
+jmp returnhere
+
+"re2.exe"+A8BF90:
+jmp newmem
+
+returnhere:
+
+[DISABLE]
+re2.exe+A8BF90:
+mov [r9+58],eax
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Insta-Kill"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(self)
+label(end)
+
+newmem:
+cmp [r9+54], 0x4B0
+je self
+mov [r9+58], 0x0
+jmp end
+self:
+mov [r9+58], eax
+end:
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+
+originalcode:
+//mov [r9+58],eax
+//ret 
+
+exit:
+jmp returnhere
+
+"re2.exe"+A8BF90:
+jmp newmem
+
+returnhere:
+
+[DISABLE]
+re2.exe+A8BF90:
+mov [r9+58],eax
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Infinite Health and Insta-Kill"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(self)
+
+newmem:
+cmp [r9+54], 0x4B0
+je self
+mov [r9+58], 0x0
+self:
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+
+originalcode:
+//mov [r9+58],eax
+//ret 
+
+exit:
+jmp returnhere
+
+"re2.exe"+A8BF90:
+jmp newmem
+
+returnhere:
+
+[DISABLE]
+re2.exe+A8BF90:
+mov [r9+58],eax
+ret
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+int 3
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>ammo</Name>
+      <Address>234B5520000</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+</CheatTable>

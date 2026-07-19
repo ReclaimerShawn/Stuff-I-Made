@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Infinite Ammo (and Weapon Finder)"</Description>
+      <Options moDeactivateChildrenAsWell="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+globalalloc(weapaddress, 4)
+
+newmem:
+mov eax, ecx
+add eax, 0x8
+mov [weapaddress], eax
+mov [ecx+08], 0x7FFF
+xor eax, eax
+
+originalcode:
+//mov [ecx+08],eax
+//xor eax,eax
+
+exit:
+jmp returnhere
+
+"re5dx9.exe"+84C1EF:
+jmp newmem
+returnhere:
+
+alloc(newmem2,2048)
+label(returnhere2)
+label(originalcode2)
+label(exit2)
+
+newmem2:
+push ebx
+mov ebx, ecx
+add ebx, 0x8
+mov [weapaddress], ebx
+mov [ecx+08],0x7FFFF
+pop ebx
+jg re5dx9.exe+3E8540
+
+originalcode2:
+//mov [ecx+08],eax
+//jg re5dx9.exe+3E8540
+
+exit2:
+jmp returnhere2
+
+"re5dx9.exe"+3E852D:
+jmp newmem2
+returnhere2:
+
+alloc(newmem3,2048)
+label(returnhere3)
+label(originalcode3)
+label(exit3)
+
+newmem3:
+push ebx
+mov ebx, ecx
+add ebx, 0x8
+mov [weapaddress], ebx
+mov [ecx+08],0x7FFF
+mov eax,[esp+1C]
+pop ebx
+
+originalcode3:
+//mov [ecx+08],esi
+//mov eax,[esp+1C]
+
+exit3:
+jmp returnhere3
+
+"re5dx9.exe"+3E776B:
+jmp newmem3
+nop
+nop
+returnhere3:
+
+[DISABLE]
+re5dx9.exe+84C1EF:
+mov [ecx+08],eax
+xor eax,eax
+
+re5dx9.exe+3E852D:
+mov [ecx+08],eax
+jg re5dx9.exe+3E8540
+
+re5dx9.exe+3E776B:
+mov [ecx+08],esi
+mov eax,[esp+1C]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"Weapon ID"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0x0000:Nothing
+0x0100:Hand-to-hand
+0x0101:Knife (Chris)
+0x0102:M92F (HG)
+0x0103:VZ61 (MG)
+0x0104:Ithaca M37 (SG)
+0x0105:S75 (RIF)
+0x0106:Hand grenade
+0x0107:Incendiary grenade
+0x0108:Flash grenade
+0x0109:SIG 556 (MG)
+0x010A:Proximity Bomb
+0x010B:S&amp;W M29 (MAG)
+0x010C:Grenade launcher
+0x010D:Rocket launcher
+0x010E:Knife (Sheva)
+0x010F:Longbow
+0x0110:H&amp;K P8 (HG)
+0x0111:SIG P226 (HG)
+0x0112:(dummy_wp12)
+0x0113:H&amp;K MP5 (MG)
+0x0114:(dummy_wp14)
+0x0115:Gatling gun
+0x0116:M3 (SG)
+0x0117:Jail Breaker (SG)
+0x0118:(dummy_wp18)
+0x0119:Hydra (SG)
+0x011A:L Hawk (MAG)
+0x011B:S&amp;2 M500 (MAG)
+0x011C:H&amp;K PSG-1 (RIF)
+0x011D:AK-74 (MG)
+0x011E:M93R (HG)
+0x011F:Px4 (HG)
+0x0120:Dragunsov SVD (RIF)
+0x0121:Flamethower
+0x0122:Stun rod
+0x0123:Knife (Wesker)
+0x0124:Knife (Jill)
+0x0125:G. launcher (EXP)
+0x0126:G. launcher (ACD)
+0x0127:G. launcher (ICE)
+0x0128:(dummy_wp28)
+0x0129:Samurai Edge (HG)
+0x012A:(dummy_wp2a)
+0x012B:(dummy_wp2b)
+0x012C:(dummy_wp2c) (Gun turret)
+0x012D:(dummy_wp2d) (PKM Light Mac)
+0x012E:(dummy_wp2e) (Minigun)
+0x012F:Gun turret
+0x0130:Latern
+0x0131:(dummy_wp31)
+0x0132:(dummy_wp32) (bullet sound)
+0x0133:(dummy_wp33)
+0x0134:L.T.D
+0x0135:RPG-7 NVS
+0x0136:Egg (Rotten)
+0x0137:Hand-to-hand
+0x0138:(dummy_wp38) (Rocket launcher)
+0x0139:G. launcher (FLM)
+0x013A:G. launcher (FLS)
+0x013B:G. launcher (ELC)
+0x013C:Egg (White)
+0x013D:Egg (Brown)
+0x013E:Egg (Gold)
+0x013F:(dummy_wp3f) (L.T.D effect)
+0x0140:(dummy_wp40) (launch an explosive)
+0x0141:(dummy_wp41) (launch an acid)
+0x0142:(dummy_wp42) (launch a nitrogen)
+0x0143:(dummy_wp43)
+0x0144:(dummy_wp44) (launch a rocket)
+0x0145:(dummy_wp45)
+0x0146:(dummy_wp46)
+0x0147:(dummy_wp47)
+0x0148:(dummy_wp48)
+0x0149:(dummy_wp49)
+0x014A:(dummy_wp4a)
+0x014B:(dummy_wp4b) (launcher a rocket)
+0x014C:(dummy_wp4c) (launcher a rocket)
+0x014D:(dummy_wp4d) (launcher a flame)
+0x014E:(dummy_wp4e) (launcher a flash)
+0x014F:(dummy_wp4f) (launcher a electric)
+0x0150:Adze
+0x0151:Sickle
+0x0152:Bow gun
+0x0153:Shovel
+0x0154:Dynamite
+0x0155:Machete
+0x0156:Shotgun
+0x0157:Grenade launcher
+0x0158:Giant axe
+0x0159:Steel pipe
+0x015A:Bottle
+0x015B:Chainsaw
+0x015C:(dummy_wp5c) (Molotov cocktail)
+0x015D:Gatling gun
+0x015E:Torch
+0x015F:Spear
+0x0160:Wooden shield
+0x0161:Metal shield
+0x0162:Bow
+0x0163:Shield
+0x0164:Morring star
+0x0165:Stun rod
+0x0166:Knife
+0x0167:Handgun
+0x0168:Rocket Launcher
+0x0169:Adze
+0x016A:Machine gun
+0x016B:Rifle
+0x016C:Molotov cocktail
+0x016D:Hand grenade
+0x016E:Flash grenade
+0x016F:Spear
+0x0170:Chair
+0x0171:Pickaxe
+0x0172:Club
+0x0173:Wrench
+0x0174:Bomb
+0x0175:Megaphone
+0x0176:Machine gun
+0x0177:dummy_wp77) (axe w/fire)
+0x0178:(dummy_wp78) (rock)
+0x0179:(dummy_wp79) (fog)
+0x017A:(dummy_wp7a) (gasoline tank)
+0x017B:(dummy_wp7b)
+0x017C:(dummy_wp7c)
+0x017D:(dummy_wp7d)
+0x017E:(dummy_wp7e)
+0x017F:(dummy_wp7f)
+0x0180:(dummy_wp80) (explosive arrow)
+0x0181:(dummy_wp80) (fire arrow)
+0x0182:(dummy_wp82)
+0x0183:(dummy_wp83) (launch a rocket)
+0x0184:(dummy_wp84)
+0x0185:(dummy_wp85)
+0x0186:(dummy_wp86)
+0x0187:(dummy_wp87)
+0x0188:(dummy_wp88) (rocket launcher)
+0x0189:(dummy_wp89) (Wesker´s Samurai Edge)
+0x018A:(dummy_wp8a) (rocket stopped)
+0x018B:(dummy_wp8b)
+0x018D:(dummy_wp8d)
+0x018E:(dummy_wp8e)
+0x018F:(dummy_wp8f)
+0x0201:Handgun ammo
+0x0202:Machine gun ammo
+0x0203:Shotgun shells
+0x0204:Rifle ammo
+0x0205:(dummy)
+0x0206:Explosives rounds
+0x0207:Acid rounds
+0x0208:Nitrogen rounds
+0x0209:Magnum ammo
+0x020A:Rocket
+0x020B:Arrow
+0x020C:(dummy)
+0x020D:(dummy)
+0x020E:Flame rounds
+0x020F:Flash rounds
+0x0210:Electric rounds
+0x0211:RPG round
+0x0301:Herb (green)
+0x0302:Herb (red)
+0x0303:Herb (X)
+0x0304:First aid spray
+0x0305:Herb (Green)
+0x0306:Herb (Red)
+0x0307:Herb (G+G)
+0x0308:Herb (G+G+G)
+0x0309:Herb (G+R)
+0x030A:Herb (G+X)
+0x030B:Herb (G+R+X)
+0x0601:Melee vest
+0x0606:Bulletproof vest
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[weapaddress]-0x4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Weapon Capacity"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[weapaddress]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"Damage Upgrade"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0x00:Disabled
+0xFF:Enabled (Lots of Damage or No Damage)
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[weapaddress]+0x18</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Fire Rate Upgrade"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0x00:Disabled
+0xFF:Rapid Fire
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[weapaddress]+0x19</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"Ammo Upgrade"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0x00:Disabled
+0xFF:Infinite Ammo
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[weapaddress]+0x1B</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Infinite Money"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+mov [ecx+00000188], 0x7FFFFFFF
+
+originalcode:
+//mov [ecx+00000188],eax
+
+exit:
+jmp returnhere
+
+"re5dx9.exe"+8EEACB:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+re5dx9.exe+8EEACB:
+mov [ecx+00000188],eax
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Infinite Exchange Points"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+mov [ecx+0000018C], 0x7FFFFFFF
+
+originalcode:
+//mov [ecx+0000018C],eax
+
+exit:
+jmp returnhere
+
+"re5dx9.exe"+8EEB1B:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+re5dx9.exe+8EEB1B:
+mov [ecx+0000018C],eax
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Infinite Mercenaries Time"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+re5dx9.exe+3178AF:
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+[DISABLE]
+re5dx9.exe+3178AF:
+movss [edi+000004DC], xmm0
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"Infinite HP"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+re5dx9.exe+77C960:
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+[DISABLE]
+re5dx9.exe+77C960:
+sub [esi+00001364],cx
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"Infinite LTD"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+mov [esi+00001C68], 0x0
+
+originalcode:
+//movss [esi+00001C68],xmm1
+
+exit:
+jmp returnhere
+
+"re5dx9.exe"+797B0A:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+[DISABLE]
+re5dx9.exe+797B0A:
+movss [esi+00001C68],xmm1
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"Character Modifier (Syndeh Patch Needed)"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+globalalloc(character, 4)
+
+newmem:
+push ebx
+mov ebx, esi
+add ebx, 0x8
+mov [character], ebx
+mov [esi+08],ecx
+mov edx,[edi]
+pop ebx
+
+originalcode:
+//mov [esi+08],ecx
+//mov edx,[edi]
+
+exit:
+jmp returnhere
+
+"re5dx9.exe"+89332D:
+jmp newmem
+returnhere:
+
+[DISABLE]
+re5dx9.exe+89332D:
+mov [esi+08],ecx
+mov edx,[edi]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"Chris Character Modifier"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0x00:Chris
+0x01:Sheva
+0x02:Jill
+0x03:Wesker
+0x04:Josh
+0x05:Excella
+0x06:Barry
+0x07:Rebecca
+0x86:Irving
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[character]-0x50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"Chris Skin Modifier"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[character]-0x4C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>37</ID>
+          <Description>"Sheva Character Modifier"</Description>
+          <DropDownList ReadOnly="1" DisplayValueAsItem="1">0x00:Chris
+0x01:Sheva
+0x02:Jill
+0x03:Wesker
+0x04:Josh
+0x05:Excella
+0x06:Barry
+0x07:Rebecca
+0x86:Irving
+</DropDownList>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[character]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"Sheva Skin Modifier"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[character]+0x4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"Enable LTD (Full Credit to Raz0r)"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+re5dx9.exe+7A7E74:
+db B0 D9 1E 01 EB 21 8B 17 8B 42 10 8B CF FF D0 8B 48 20 3B 0D A0 DB 1E 01 74 0D 80 BE BA 1C 00 00 00 0F 84 84 01 00 00 8B 54 24 14 8D AF 90 12 00 00 52 8B CD E8 83 BF 09 00 50 8B CD E8 9B C2 09 00 83 F8 0B 74 00 C6 86 BA 1C 00 00 01 0F 84 00 00 00 00 80 BB 98 29 00 00 00 0F 84 93 00 00 00 8B 8E A8 1C 00 00 85 C9 0F 84 85 00 00 00 8B 01 8B 50 10 FF D2 8B 40 20 3B 05 B0 D9 1E 01 74 21 8B 8E A8 1C 00 00 8B 11 8B 42 10 FF D0 8B 48 20 3B 0D A0 DB 1E 01 74 09 80 BE BA 1C 00 00 00 74 52 8B 86 A8 1C 00 00 8B 96 AC 1C 00 00 8D A8 90 12 00 00 52 8B CD E8 01 BF 09 00 50 8B CD E8 19 C2 09 00 83 F8 0B 74 09 80 BE BA 1C 00 00 00 74 22 A1 9C 20 1B 01 F3 0F 10 86 D4 0F 00 00 F3 0F 59 40 28 F3 0F 58 86 98 1C 00 00 F3 0F 11 86 98 1C 00 00 F3 0F 10 86 98 1C 00 00 0F 2F 05 CC 50 F6 00 76 29 8A 86 A5 1C 00 00 A8 01 75 1F 8B 8E 54 14 00 00 6A 03 53 6A 3C 6A 4B 6A 3C 0C 01 51 8B CB 88 86 A5 1C 00 00 E8 1F 33 FB FF 80 A6 A5 1C 00 00 FD F3 0F 10 86 98 1C 00 00 0F 2F 05 A8 CB 0B 01 89 BE A8 1C 00 00 76 00 8B 86 54 14
+
+[DISABLE]
+re5dx9.exe+7A7E74:
+db B0 D9 1E 01 74 21 8B 17 8B 42 10 8B CF FF D0 8B 48 20 3B 0D A0 DB 1E 01 74 0D 80 BE BA 1C 00 00 00 0F 84 84 01 00 00 8B 54 24 14 8D AF 90 12 00 00 52 8B CD E8 83 BF 09 00 50 8B CD E8 9B C2 09 00 83 F8 0B 74 0D 80 BE BA 1C 00 00 00 0F 84 58 01 00 00 80 BB 98 29 00 00 00 0F 84 93 00 00 00 8B 8E A8 1C 00 00 85 C9 0F 84 85 00 00 00 8B 01 8B 50 10 FF D2 8B 40 20 3B 05 B0 D9 1E 01 74 21 8B 8E A8 1C 00 00 8B 11 8B 42 10 FF D0 8B 48 20 3B 0D A0 DB 1E 01 74 09 80 BE BA 1C 00 00 00 74 52 8B 86 A8 1C 00 00 8B 96 AC 1C 00 00 8D A8 90 12 00 00 52 8B CD E8 01 BF 09 00 50 8B CD E8 19 C2 09 00 83 F8 0B 74 09 80 BE BA 1C 00 00 00 74 22 A1 9C 20 1B 01 F3 0F 10 86 D4 0F 00 00 F3 0F 59 40 28 F3 0F 58 86 98 1C 00 00 F3 0F 11 86 98 1C 00 00 F3 0F 10 86 98 1C 00 00 0F 2F 05 CC 50 F6 00 76 29 8A 86 A5 1C 00 00 A8 01 75 1F 8B 8E 54 14 00 00 6A 03 53 6A 3C 6A 4B 6A 3C 0C 01 51 8B CB 88 86 A5 1C 00 00 E8 1F 33 FB FF 80 A6 A5 1C 00 00 FD F3 0F 10 86 98 1C 00 00 0F 2F 05 A8 CB 0B 01 89 BE A8 1C 00 00 76 48 8B 86 54 14
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"Find Item By Clicking on It"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+globalalloc(weapaddr, 4)
+
+newmem:
+cmp dword ptr [eax+08],00
+mov ecx, eax
+add ecx, 0x8
+mov [weapaddr], ecx
+movzx ecx,byte ptr [eax+05]
+
+originalcode:
+//cmp dword ptr [eax+08],00
+//movzx ecx,byte ptr [eax+05]
+
+exit:
+jmp returnhere
+
+"re5dx9.exe"+86AFA1:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+[DISABLE]
+"re5dx9.exe"+86AFA1:
+cmp dword ptr [eax+08],00
+movzx ecx,byte ptr [eax+05]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"Weapon ID"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[weapaddr]-0x4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"Weapon Capacity"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[weapaddr]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>50</ID>
+          <Description>"Damage Upgrade"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[weapaddr]+0x18</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"Fire Rate Upgrade"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[weapaddr]+0x19</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"Ammo Upgrade"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[weapaddr]+0x1B</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>weapaddr</Name>
+      <Address>2F040000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>weapaddress</Name>
+      <Address>2F040010</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+</CheatTable>
